@@ -1,0 +1,35 @@
+header{
+    background-size: 100%;
+    background-color: rgba(153, 245, 237, 0.438);
+    padding: 30px;
+}
+ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+li{
+    display: inline;
+    margin: 8px;
+    float: right;
+}
+h1{
+    font-family: 'Merienda One', cursive;
+}
+body{
+    background-image: url("textura-de-fundo.jpg");
+}
+a{
+    background-color: cornsilk;
+    color: darkblue;
+    padding: 5px 7px;
+    text-decoration: none;
+    text-align: center;
+}
+a:hover{
+    background-color: darkgrey;
+}
+#apresentacao{
+    font-family: 'Merienda One', cursive;
+    font-size: 15px;
+}
