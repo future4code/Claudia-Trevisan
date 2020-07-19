@@ -1,7 +1,11 @@
-header{
+#inicio{
     background-size: 100%;
-    background-color: rgba(153, 245, 237, 0.438);
-    padding: 30px;
+    background-color: rgba(177, 209, 219, 0.384);
+    padding: 7px;
+}
+header{
+    margin: 3px 3px 15px 3px;
+    padding: 3px 3px 15px 3px;
 }
 ul{
     list-style-type: none;
@@ -15,12 +19,14 @@ li{
 }
 h1{
     font-family: 'Merienda One', cursive;
+    text-align: center;
 }
 body{
-    background-image: url("textura-de-fundo.jpg");
+    background-image: url("./img/textura-de-fundo1.jpg");
+    width: 98vw;
 }
-a{
-    background-color: cornsilk;
+.primeiros{
+    background-color: rgba(255, 248, 220, 0.568);
     color: darkblue;
     padding: 5px 7px;
     text-decoration: none;
@@ -29,7 +35,77 @@ a{
 a:hover{
     background-color: darkgrey;
 }
-#apresentacao{
+.apresentacao{
     font-family: 'Merienda One', cursive;
     font-size: 15px;
+    text-align: center;   
+}
+#projeto1{
+    float: left;
+    border: 2px solid black;
+    margin: 50px 20px 20px 10px;
+}
+#projeto2{
+    float: right;
+    border: 2px solid black;
+    margin: 8px 8px 20px 50px;
+}
+.descricao1{
+    text-align: center;
+    color: rgb(25, 8, 177);
+    text-decoration-line: line-through;
+    font-family: 'Merienda One', cursive;
+}
+#descricao2{
+    text-align: center;
+    color: rgb(25, 8, 177);
+    text-decoration-line: line-through;
+    font-family: 'Merienda One', cursive;
+}
+h2{
+    font-family: 'Merienda One', cursive;
+    text-align: center;
+    margin: 5%;
+}
+form{
+    margin: 3% 25% 20% 38%;
+}
+form > label{
+    font-family: 'Merienda One', cursive;
+    font-size: 30px;
+   
+}
+input[type=text] {
+    background-image: url(./img/textura-de-fundo.jpg);
+    width: 50%;
+    height: 25px;
+    padding: 7px;
+    margin: 10px 0px 10px 0px;
+    box-sizing: border-box;
+    border-radius: 6px;
+}
+input[type=email] {
+    background-image: url(./img/textura-de-fundo.jpg);
+    width: 50%;
+    height: 25px;
+    padding: 7px;
+    margin: 10px 0px 10px 0px;
+    box-sizing: border-box;
+    border-radius: 6px;
+}
+input[type=submit]{
+    background-color: black;
+    color: white;
+    width: 25%;
+    height: 25px;
+    margin: 8px 10px 8px 50px;
+    font-family: 'Merienda One', cursive;
+}
+h3{
+    margin: 3px 90px 5px 700px;
+    font-family: 'Merienda One', cursive;
+    color: rgb(41, 22, 22);
+}
+.return{
+    float: inline-end;
 }
