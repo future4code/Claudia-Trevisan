@@ -1,0 +1,108 @@
+#inicio{
+    background-size: 100%;
+    background-color: rgba(177, 209, 219, 0.384);
+    padding: 7px;
+}
+header{
+    margin: 3px 3px 15px 3px;
+    padding: 3px 3px 15px 3px;
+}
+ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+li{
+    display: inline;
+    margin: 8px;
+    float: right;
+}
+h1{
+    font-family: 'Merienda One', cursive;
+    text-align: left;
+}
+body{
+    background-image: url("./img/textura-de-fundo1.jpg");
+    width: 98vw;
+}
+.links-pagina{
+    background-color: rgba(255, 248, 220, 0.568);
+    color: darkblue;
+    padding: 5px 7px;
+    text-decoration: none;
+    text-align: center;
+}
+a:hover{
+    background-color: darkgrey;
+}
+.apresentacao{
+    font-family: 'Merienda One', cursive;
+    font-size: 15px;
+    text-align: right;
+}
+
+.home{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 70%;
+}
+.descricao{
+    text-align: inherit;
+    font-family: 'Merienda One', cursive;
+    color: rgb(6, 6, 114);
+}
+#ajuste-primeiro{
+    margin: 20px 40px 20px 200px;  
+}
+#ajuste-segundo{
+    margin: 20px 20px 20px 200px;
+   
+}
+h2{
+    font-family: 'Merienda One', cursive;
+    text-align: center;
+    margin: 5%;
+}
+form{
+    margin: 3% 25% 20% 38%;
+}
+form > label{
+    font-family: 'Merienda One', cursive;
+    font-size: 30px;
+   
+}
+input[type=text] {
+    background-image: url(./img/textura-de-fundo.jpg);
+    width: 75%;
+    height: 25px;
+    padding: 7px;
+    margin: 10px 0px 10px 0px;
+    box-sizing: border-box;
+    border-radius: 6px;
+}
+input[type=email] {
+    background-image: url(./img/textura-de-fundo.jpg);
+    width: 75%;
+    height: 25px;
+    padding: 7px;
+    margin: 10px 0px 10px 0px;
+    box-sizing: border-box;
+    border-radius: 6px;
+}
+input[type=submit]{
+    background-image: url(./img/textura-de-fundo.jpg);
+    color: rgb(35, 42, 77);
+    width: 75%;
+    height: 45px;
+    border-radius: 7px;
+    font-family: 'Merienda One', cursive;
+    font-size: 20px;
+}
+h3{
+    margin: 3px 90px 5px 700px;
+    font-family: 'Merienda One', cursive;
+    color: rgb(41, 22, 22);
+}
+.return{
+    float: inline-end;
+}
