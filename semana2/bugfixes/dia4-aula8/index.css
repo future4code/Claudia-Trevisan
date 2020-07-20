@@ -30,7 +30,12 @@ img {
 }
 
 div>p:first-child {
-    display: inline;
+    display: block;
+    width: 180px;
+    height: 90px;
+    margin-left: auto;
+    margin-right: auto;
+
 }
 
 div img {
@@ -65,15 +70,18 @@ div img {
   *
   *  ESTILOS HOME 
   *
-  **/
+  **/  
 
 #container-de-descricao {
     background-color: #2274a5;
     color: white;
+    padding-top: 80px;
+    
 }
 
 #container-de-descricao>ol {
     padding: 15px 0px;
+    margin-top: 70px;
 }
 
 #container-para-comprar {
@@ -81,11 +89,12 @@ div img {
 }
 
 #container-para-comprar>p {
+    display: inline;
+    text-align: center;
     color: #c44f00;
     padding: 100px 0;
     font-size: 60px;
 }
-
 
 /**
   *
