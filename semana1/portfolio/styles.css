@@ -19,13 +19,13 @@ li{
 }
 h1{
     font-family: 'Merienda One', cursive;
-    text-align: center;
+    text-align: left;
 }
 body{
     background-image: url("./img/textura-de-fundo1.jpg");
     width: 98vw;
 }
-.primeiros{
+.links-pagina{
     background-color: rgba(255, 248, 220, 0.568);
     color: darkblue;
     padding: 5px 7px;
@@ -38,29 +38,25 @@ a:hover{
 .apresentacao{
     font-family: 'Merienda One', cursive;
     font-size: 15px;
-    text-align: center;   
+    text-align: right;
 }
-#projeto1{
-    float: left;
-    border: 2px solid black;
-    margin: 50px 20px 20px 10px;
+
+.home{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 70%;
 }
-#projeto2{
-    float: right;
-    border: 2px solid black;
-    margin: 8px 8px 20px 50px;
-}
-.descricao1{
-    text-align: center;
-    color: rgb(25, 8, 177);
-    text-decoration-line: line-through;
+.descricao{
+    text-align: inherit;
     font-family: 'Merienda One', cursive;
+    color: rgb(6, 6, 114);
 }
-#descricao2{
-    text-align: center;
-    color: rgb(25, 8, 177);
-    text-decoration-line: line-through;
-    font-family: 'Merienda One', cursive;
+#ajuste-primeiro{
+    margin: 20px 40px 20px 200px;  
+}
+#ajuste-segundo{
+    margin: 20px 20px 20px 200px;
+   
 }
 h2{
     font-family: 'Merienda One', cursive;
@@ -77,7 +73,7 @@ form > label{
 }
 input[type=text] {
     background-image: url(./img/textura-de-fundo.jpg);
-    width: 50%;
+    width: 75%;
     height: 25px;
     padding: 7px;
     margin: 10px 0px 10px 0px;
@@ -86,7 +82,7 @@ input[type=text] {
 }
 input[type=email] {
     background-image: url(./img/textura-de-fundo.jpg);
-    width: 50%;
+    width: 75%;
     height: 25px;
     padding: 7px;
     margin: 10px 0px 10px 0px;
@@ -94,12 +90,13 @@ input[type=email] {
     border-radius: 6px;
 }
 input[type=submit]{
-    background-color: black;
-    color: white;
-    width: 25%;
-    height: 25px;
-    margin: 8px 10px 8px 50px;
+    background-image: url(./img/textura-de-fundo.jpg);
+    color: rgb(35, 42, 77);
+    width: 75%;
+    height: 45px;
+    border-radius: 7px;
     font-family: 'Merienda One', cursive;
+    font-size: 20px;
 }
 h3{
     margin: 3px 90px 5px 700px;

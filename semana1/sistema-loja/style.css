@@ -1,6 +1,6 @@
 body{
-    background-color: gray; 
-    width: 100vw
+    background-image: url(./img/fundo\ copy.jpg); 
+    background-repeat: no-repeat;
 }
 .redes{
     width: 25px; height: 25px;
@@ -10,10 +10,18 @@ h1{
     font-family: sans-serif;
 }
 #primeiro-paragrafo{
-    text-align: center; color: greenyellow;
+    text-align: center; color: rgb(4, 31, 107);
 }
 #alinhamento{
     text-align: center;
+    color: cornsilk;
+}
+a{
+    border-style: solid;
+    background-color: blue;
+    margin: 6px;
+    padding: 4px;
+    color: rgb(48, 47, 46);
 }
 #l1{
     text-align: center;
