@@ -122,8 +122,13 @@ td button {
 .container-do-search {
     margin-top: 20px;
     height: 100px;
+    text-align: center;
 }
-
+.produtos{
+    width: 900px;
+    margin-left: 400px;
+    margin-right: auto;
+}
 
 #back-button {
     background-color: white;
