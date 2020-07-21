@@ -25,6 +25,9 @@ input {
     height: 20px;
     width: 500px;
 }
+input:focus{
+    outline: none;
+}
 
 button:focus {
     color: white;
@@ -57,6 +60,9 @@ div img {
     color: white;
     margin-top: 110px;
     font-family: 'Roboto', sans-serif;
+}
+.botao-amarelo:focus{
+    outline: none;
 }
 
 .botao-amarelo:hover {
@@ -91,6 +97,7 @@ div img {
 #container-de-descricao>ol {
     padding: 10px 0px;
     font-family: 'Roboto', sans-serif;
+    list-style-position: inside;
 }
 
 #container-para-comprar {
@@ -139,7 +146,9 @@ td button:hover{
 td button:active{
     color: white;
 }
-
+td button:focus{
+    outline: none;
+}
 .container-do-search {
     margin-top: 20px;
     height: 100px;
@@ -168,7 +177,9 @@ td button:active{
     margin-top: 70px;
     margin-left: 600px;
 }
-
+#back-button:focus{
+    outline: none;
+}
 #back-button:hover {
     background-color: #635a3d
 }
