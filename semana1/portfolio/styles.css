@@ -1,10 +1,18 @@
-#inicio{
+#flex-container-inicio{
+    width: 99%;
+    flex-direction: column;
     background-size: 100%;
     background-color: rgba(177, 209, 219, 0.384);
     padding: 7px;
 }
-header{
-    margin: 3px 3px 15px 3px;
+#properties-botton:hover{
+    background-color: darkgrey;
+}
+.flex-container{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    margin: 3px 3px 15px 1120px;
     padding: 3px 3px 15px 3px;
 }
 ul{
@@ -20,25 +28,31 @@ li{
 h1{
     font-family: 'Merienda One', cursive;
     text-align: left;
+    margin-left: 18px;
 }
 body{
+    margin: 0;
+    padding: 0;
     background-image: url("./img/textura-de-fundo1.jpg");
-    width: 98vw;
 }
-.links-pagina{
+.flex-container>div{
     background-color: rgba(255, 248, 220, 0.568);
     color: darkblue;
     padding: 5px 7px;
-    text-decoration: none;
+    margin: 7px;
     text-align: center;
 }
-a:hover{
+.flex-container>div:hover{
     background-color: darkgrey;
+}
+a{
+    text-decoration: none;
 }
 .apresentacao{
     font-family: 'Merienda One', cursive;
     font-size: 15px;
     text-align: right;
+    margin-right: 10px;
 }
 
 .home{
@@ -105,4 +119,9 @@ h3{
 }
 .return{
     float: inline-end;
+}
+.container-sobre-mim{
+    display: grid;
+    grid-template-columns: 500px 200px 150px 150px;
+    grid-template-rows: ;
 }
