@@ -98,6 +98,9 @@ input[type=submit]{
     font-family: 'Merienda One', cursive;
     font-size: 20px;
 }
+input[type=submit]:active{
+    color: indigo;
+}
 h3{
     margin: 3px 90px 5px 700px;
     font-family: 'Merienda One', cursive;
