@@ -1,4 +1,4 @@
-//1
+//e1
 //a. false
 //b. false
 //c. true
@@ -12,30 +12,30 @@
 //e. 
 //f. 9
 
-///exercicio1
+//exercicio1
 //a
-//let idade1 = prompt("Qual sua idade?")
+let idade1 = prompt("Qual sua idade?")
 //b
-//let idade2 = prompt("Qual a idade do seu/sua melhor amigo(a)?")
+let idade2 = prompt("Qual a idade do seu/sua melhor amigo(a)?")
 //c
-//const diferenca = Number(idade1) - Number(idade2)
-//let compare = (idade1) > (idade2)
-//console.log("Sua idade é maior que a do seu/sua melhor amigo(a)? " + compare)
+const diferenca = Number(idade1) - Number(idade2)
+let compare = (idade1) > (idade2)
+console.log("Sua idade é maior que a do seu/sua melhor amigo(a)? " + compare)
 //d
-//console.log(diferenca)
+console.log(diferenca)
 
 //exercicio2
 //a
-//let numeroPar = prompt("Insira um numero par")
+let numeroPar = prompt("Insira um numero par")
 //b
-//let resto = Number(numeroPar) % 2
-//console.log(resto)
+let resto = Number(numeroPar) % 2
+console.log(resto)
 //c Numeros pares não deixam restos
 //d Ele realiza o calculo normalmente
 
 //exercicio3
 //a
-/*let listaDeTarefas = []
+let listaDeTarefas = []
 //b
 let tarefasUsuario1 = prompt("Cite três tarefas que você precisa realizar no dia")
 let tarefasUsuario2 = prompt("Cite três tarefas que você precisa realizar no dia")
@@ -59,7 +59,7 @@ console.log("O email " + emailDoUsuario + " foi cadastrado com sucesso. Seja bem
 //Desafios
 //1
 //a
-/*let unidadeF1 = 77
+let unidadeF1 = 77
 let conversao1 = (unidadeF1 - 32) * 5/9 + 273.15
 console.log("77°F convertido em Kelvin é = " + conversao1 + "°K")
 //b
@@ -75,7 +75,7 @@ console.log("30°C convertido em Fahrenheit e em Kelvin é, respectivamente = " 
 let unidadeC4 = prompt("Insira a temperatura que deseja converter")
 let conversao5 = Number(unidadeC4) * 5/9 + 32
 let conversao6 = (conversao5 - 32) * 5/9 + 273.15
-console.log(unidadeC4 + " convertido em Fahrenheit e em Kelvin é, respectivamente = " + conversao5 + "°F e " + conversao6 + "°K")*/
+console.log(unidadeC4 + " convertido em Fahrenheit e em Kelvin é, respectivamente = " + conversao5 + "°F e " + conversao6 + "°K")
 
 //2
 //a e b
