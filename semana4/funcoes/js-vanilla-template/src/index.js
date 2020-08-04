@@ -60,16 +60,57 @@
 //numeros(30,10)
 
 //c
-let mensagem = (frase) =>{
-    for(let x = 1; x <= 10; x++){
-        console.log (frase)
-    }
-    return frase
-}
- 
-let a = mensagem("eu sei escrever")
+//let mensagem = (frase) =>{
+//    for(let x = 1; x <= 10; x++){
+//        console.log (frase)
+//    }
+//    return frase
+//}
+// 
+//let a = mensagem("eu sei escrever")
 
-let b = 33
-for (let c = 1; c <= 10; c++){
-    console.log (b)
+//EXERCICIO 6
+
+//a
+//let elementos = (numeros) =>{
+//    console.log(numeros.length)
+//}
+//const array = [10, 23, 45, 78, 90, 52, 35, 67, 84, 22]
+//elementos(array)
+
+//b
+let seForPar = (numero) =>{
+    if (numero%2 === 0){
+        console.log(numero, "é par")
+    }else{
+        console.log(numero, "não é par")
+    }
 }
+const numeroQueEuQuiser = 580
+seForPar (numeroQueEuQuiser)
+
+//c
+//let soSendoPar = (numeros)=>{
+//    let numerosPares = 0
+//    for (let i of numeros){
+//        if (i % 2 === 0){
+//            numerosPares += 1 
+//        }
+//    }
+//    console.log(numerosPares)
+//}
+//const array = [10, 23, 45, 78, 90, 52, 35, 67, 84, 22]
+//soSendoPar (array)
+
+//d
+let soSendoPar = (numeros)=>{
+    let numerosPares = 0
+    for (let i of numeros){
+        if (i % 2 === 0){
+            numerosPares += 1 
+        }
+    }
+    console.log(numerosPares)
+}
+const array = [10, 23, 45, 78, 90, 52, 35, 67, 84, 22]
+soSendoPar (array)
