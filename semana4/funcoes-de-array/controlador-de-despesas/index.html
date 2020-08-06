@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="index.js" defer></script>
+    <title>Seu Banco</title>
+</head>
+<body>
+    <section class="secoes">
+        <h1>Controlador de Despesas</h1>
+        <form action="">
+            <label for="valor">Valor:</label>
+            <input type="text" id="valor">
+            <label for="tipo-de-despesa">Tipo de despesa:</label>
+            <select name="tipo-despesa" id="tipo-de-despesa">
+                <option value="Despesa da Casa">Despesas da casa</option>
+                <option value="Despesa de viagem">Despesas de viagem</option>
+                <option value="Outros">Outros</option>
+            </select>
+            <label for="descricao">Descrição:</label>
+            <input type="text" id="descricao">
+            <button id="adicionaDespesa">Adicionar Despesa</button>
+        </form>
+    </section>
+    <section class="secoes">
+        <h1>Despesas Detalhadas</h1>
+        <button id="filtroDespesas">Filtrar</button>
+    </section>
+    <section class="secoes">
+        <h1>Extrato</h1>
+    </section>
+</body>
+</html>
