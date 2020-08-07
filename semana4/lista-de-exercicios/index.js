@@ -31,3 +31,65 @@
 //o mesmo laço verifica se o maior numero do array é maior que o valor da variavel numero2, se for 
 //a variavel numero2 recebe o valor do indice do array ate encontrar o valor maximo.
 //No console será impresso o menor numero do array e na linha abaixo o maior.
+
+//Bloco2
+//1
+//As tres maneiras são .forEach, .map e .filter.
+
+//let array1 = [145, 1, 5, 90, 34, 85, 77]
+//const exemplo1 = (elementoDoArray, index, array) =>{
+//   array[index] = elementoDoArray*2 
+//}
+//
+//array1.forEach(exemplo1)
+//
+//console.log(array1)
+
+//let array2 = [145, 1, 5, 90, 34, 85, 77]
+//const exemplo2 = (elementoDoArray, index, array) =>{
+//   return  elementoDoArray*3 
+//
+//}
+//
+//const modificaArray = array2.map(exemplo2)
+//console.log(modificaArray)
+
+//let array3 = [145, 1, 5, 90, 34, 85, 77]
+//const exemplo3 = (elementoDoArray, index, array) =>{
+//    if(elementoDoArray % 2 !== 0){
+//        return true
+//    }
+//    return false
+//}
+//
+//const soImpar = array3.filter(exemplo3)
+//console.log(soImpar)
+
+//2 - a
+//False
+
+//b
+//True
+
+//c
+//True
+
+//d
+//True
+
+//e
+//True
+
+//3
+//Não funciona porque não incrementa o i, vira um loop infinito.
+//const quantidadeDeNumerosPares = 3
+//let i = 1
+//while(i <= quantidadeDeNumerosPares) {
+//  console.log(i*2)
+//  i++
+//}
+
+//4
+const verificaLados = (a, b, c) =>{
+    
+}
