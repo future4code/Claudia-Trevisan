@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import {CardVideo} from '.components/CardVideo';
-import {ListItem} from '.components/ListItem'
+import {ListItem} from '.components/ListItem';
 
 function App() {
   const titulo = "Titulo do video"
@@ -20,7 +20,7 @@ function App() {
             <main>
                 <ListItem />
                 <section className="painel-de-videos">
-                    <CardVideo />
+                    <CardVideo imagem = {imagem} {titulo=video1}/>
                     <CardVideo />
                     <CardVideo />
                     <CardVideo />

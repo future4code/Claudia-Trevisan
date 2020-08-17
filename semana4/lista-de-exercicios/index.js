@@ -90,6 +90,54 @@
 //}
 
 //4
-const verificaLados = (a, b, c) =>{
-    
+//const verificaLados = (a, b, c) =>{
+//    if (a === b && b === c){
+//        console.log("É equilátero")
+//    }
+//    if (a === b && b !== c || b === c && a !== c){
+//        console.log("É isósceles")
+//    }
+//    if (a !== b && b !== c){
+//        console.log("É Escaleno")
+//    }
+//}
+//verificaLados(10, 11, 13)
+
+//5
+//const analiseNumbers = (a, b) =>{
+//    if(a > b){
+//        console.log("O maior é", a)
+//    }else if(b > a){
+//        console.log("O maior é", b)
+//    }else{
+//        console.log("São iguais")
+//    }
+//    if(a % b === 0){
+//        console.log(a, "é divisivel por", b)
+//    }else{
+//        console.log(a,"não é divisivel por", b)
+//    }
+//    if(b % a === 0){
+//        console.log(b, "é divisivel por", a)
+//    }else{
+//        console.log("Não são divisiveis um pelo outro")
+//    }
+//    let diferente = (a - b)
+//    if (diferente >= 1){
+//        ("A diferença entre eles é", diferente)
+//    }else{
+//        diferente = (b - a)
+//        console.log("A diferença entre eles é", diferente)
+//    }
+//}
+//
+//analiseNumbers (15, 30)
+
+//Bloco3
+//1
+
+const numbers = [12, 48, 63, 1, 90, 37]
+
+const recebeArray = (arrayDeNumeros) =>{
+
 }
