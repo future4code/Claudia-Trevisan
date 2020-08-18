@@ -25,23 +25,23 @@ class App extends React.Component {
           id: Date.now(),
           texto: "Fazer feira",
           completa: false
-      },
-      {
-        id: Date.now(),
-        texto: "Limpar ventiladores",
-        completa: true
-      }
+        }
       ],
       inputValue: '',
       filtro: ''
     }
 
   componentDidUpdate() {
-
+    const tasks = this.state.tarefas
+    localStorage.setItem("tarefas", JSON.stringify(tasks));
   };
 
   componentDidMount() {
-
+    const tarefaString = localStorage.getItem("tarefas");
+    const tarefaObjeto = JSON.parse(tarefaString);
+    if(tarefaObjeto){ 
+      this.setState({tarefas: tarefaObjeto});
+    };
   };
 
   onChangeInput = (event) => {
