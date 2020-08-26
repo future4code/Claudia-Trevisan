@@ -11,16 +11,18 @@ const AppContainer = styled.main`
 
 export default class App extends React.Component{
   state={
-    users: []
+    users: [],
+    inputName: "",
+    inputEmail: ""
   };
 
   getUsers = () =>{
     const request = axios.get(
         "https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users",
         {
-            headers: {
-                Authorization: "claudia-trevisan-jackson"
-            }
+          headers: {
+            Authorization: "claudia-trevisan-jackson"
+          }
         }
     );
 
@@ -32,10 +34,10 @@ export default class App extends React.Component{
     });
   };
 
-  logOnUsers = () =>{
+  logOnUsers = (name, email) =>{
     const body = {
-      name: this.state.inputName,
-      email: this.state.iputEmail
+      name: name,
+      email: email
     };
     const request = axios.post(
       "https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users",
@@ -49,25 +51,29 @@ export default class App extends React.Component{
     request
     .then((response) =>{
       alert(`Usuário ${this.state.inputName} cadastrado com sucesso.`)
-      this.getUsers();
       this.setState({inputName: ""});
+      this.setState({inputEmail: ""});
     }).catch((error) =>{
       alert("Ocorreu um erro")
     })
+    
   };
 
+  onChangeInput = (event) =>{
+    this.setState({inputName: event.target.value})
+  };
   
+  onChangeInputEmail = (event) =>{
+      this.setState({inputEmail: event.target.value})
+  };
 
-  // componentDidMount(){
-  //   this.getUsers();
-  // };
 
   render() {
 
     return (
       <AppContainer>
-        <LogOn/>
-        <UsersList/>
+        <LogOn inputName={this.state.inputName} inputEmail={this.state.inputEmail} pass={this.logOnUsers} again={this.onChangeInput} andAgain={this.onChangeInputEmail}/>
+        <UsersList passingList={this.state.users}/>
       </AppContainer>
     );
   }

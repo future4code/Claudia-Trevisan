@@ -1,5 +1,5 @@
 import React from 'react'
-// import axios from "axios"
+import axios from "axios"
 import styled from "styled-components"
 
 const ContainerLogOn = styled.div`
@@ -28,10 +28,6 @@ const Input = styled.div`
 `;
 
 export default class LogOn extends React.Component{
-    state = {
-        inputName: "",
-        inputEmail: ""
-    };
 
     
 
@@ -40,14 +36,14 @@ export default class LogOn extends React.Component{
             <ContainerLogOn>
                 <Input>
                     <label>Nome:
-                        <input type="text"/>
+                        <input type="text" value={this.props.inputName} onChange={this.props.again}/>
                     </label>
                 </Input>
                 <Input>
                     <label>Email:
-                        <input type="email"/>
+                        <input type="email" value={this.props.inputEmail} onChange={this.props.andAgain}/>
                     </label>
-                    <button>Salvar</button>            
+                    <button onClick={() => this.props.pass(this.props.inputName, this.props.inputEmail)}>Salvar</button>            
                 </Input>
             </ContainerLogOn>
         )
