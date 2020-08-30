@@ -2,6 +2,101 @@ import React from 'react';
 import axios from 'axios';
 import styled from 'styled-components'
 
+const BigContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    width: 100vw;
+    background-color: #0f0a28;
+`;
+
+const Title = styled.h3`
+    color: white;
+    margin-top: 5px;
+    margin-bottom: 8px;
+
+    @media (min-width: 680px){
+        font-size: 3rem;
+    }
+`;
+
+const DivViewAll = styled.div`
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 80%;
+    background-color: #312e45;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 6px 1px orange;
+
+    p{
+        margin: 5px;
+        color: white;
+        text-align: center;
+        font-size: 23px;
+    }
+
+    @media (min-width: 680px){
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        p{
+            font-size: 2rem;
+        }
+    }
+`;
+
+const DivButton = styled.div`
+    display: flex;
+    margin-bottom: 5px;
+    align-items: center;
+    justify-content: center;
+
+    @media (min-width: 680px){
+        margin-top: 6px;
+    }
+`;
+
+const Button = styled.button`
+  width: 50%;
+  height: 100%;
+  border-radius: 25px;
+  border: none;
+  font-size: 110%;
+  background-color: #0f0a28;
+  color: white;
+  font-weight: 400;
+  padding: 4px;
+  margin: 6px;
+
+  :hover{
+    background-color: white;
+    color: #2e042c;
+  };
+  :focus{
+    background-color: white;
+    color: #2e042c;
+    outline: none;
+  };
+
+  @media (min-width: 680px){
+      font-size: 1rem;
+  }
+`;
+
+const ImageH = styled.img`
+  width: 40px;
+  margin-bottom: 16px;
+
+  @media (min-width: 680px){
+      width: 65px;
+  }
+`;
+
+
+
 export default class ViewAll extends React.Component{
     state ={
         list:[]
@@ -52,19 +147,21 @@ export default class ViewAll extends React.Component{
 
     render(){
         return(
-            <div>
-                <h3>Playlists</h3>
-                <ul>
-                    {this.state.list.map((playlist)=>{
-                        return(
-                            <div>
-                                <li key={playlist.id}>{playlist.name}</li>
-                                <button onClick={()=>this.onClickButtonDelete(playlist.id)}>Excluir</button>
-                            </div>
-                        ) 
-                    })}
-                </ul>
-            </div>
-        )
-    }
+            <BigContainer>
+                <Title>Playlists</Title>
+                {this.state.list.map((playlist)=>{
+                    return(
+                        <DivViewAll>
+                            <p key={playlist.id}>{playlist.name}</p>
+                            <DivButton>
+                                <Button onClick={()=>this.props.functionDetails(playlist.id, playlist.name)}>Detalhes</Button>
+                                <Button onClick={()=>this.onClickButtonDelete(playlist.id)}>Excluir</Button>
+                            </DivButton>
+                        </DivViewAll>
+                    ) 
+                })}
+                <ImageH src="spotify-sketch.png" onClick={this.props.functionBack} alt="Home"/>
+            </BigContainer>
+        );
+    };
 }

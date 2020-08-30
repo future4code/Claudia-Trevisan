@@ -1,16 +1,27 @@
 import React from 'react';
-import axios from 'axios';
 import styled from 'styled-components';
 import ViewAll from './components/ViewAll';
 import NewPlayList from './components/NewPlayList';
 import Details from './components/Details';
 import AddMusic from './components/AddMusic'
+import Home from './components/Home';
 
+const BigContainer = styled.main`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  background-color: #0f0a28;
+  width: 100vw;
+  height: 100vh;
+`;
 
 export default class App extends React.Component {
   state = {
-    currentPage: "",
-  }
+    currentPage: "pageHome",
+    idDetails: "",
+    namePlay: ""
+  };
   
     onClickButtonCreate = () =>{
     this.setState({currentPage:"pageNewPlay"})
@@ -21,11 +32,11 @@ export default class App extends React.Component {
   };
 
   onCLickButtonBack = () =>{
-    this.setState({currentPage: ""})
+    this.setState({currentPage: "pageHome"})
   };
 
-  onClickButtonDetails = () =>{
-    this.setState({currentPage: "pageDetails"})
+  onClickButtonDetails = (idPlay, namePlay) =>{
+    this.setState({currentPage: "pageDetails", idDetails: idPlay, namePlay: namePlay})
   };
 
   onClickButtonAdd = () =>{
@@ -36,26 +47,28 @@ export default class App extends React.Component {
 
   render(){
     const renderize = () =>{
-      if(this.state.currentPage === "pageNewPlay"){
+      if(this.state.currentPage === "pageHome"){
+        return <Home functionCreate={this.onClickButtonCreate} functionView={this.onClickButtonView}/>
+      }
+      else if(this.state.currentPage === "pageNewPlay"){
         return <NewPlayList functionBack={this.onCLickButtonBack} functionView={this.onClickButtonView}/>
       }
       else if(this.state.currentPage === "pageViewAll"){
-        return <ViewAll functionBack={this.onCLickButtonBack}/>
+        return <ViewAll functionBack={this.onCLickButtonBack} functionDetails={this.onClickButtonDetails}/>
       }
       else if(this.state.currentPage === "pageDetails"){
-        return <Details functionBack={this.onCLickButtonBack}/>
+        return <Details functionBack={this.onCLickButtonBack} idDetails={this.state.idDetails} 
+        namePlay={this.state.namePlay} functionView={this.onClickButtonView}/>
       }
       else if(this.state.currentPage === "pageAdd"){
-        return <AddMusic functionBack={this.onCLickButtonBack}/>
+        return <AddMusic functionBack={this.onCLickButtonBack} idDetails={this.state.idDetails}/>
       }
     };
 
     return (
-      <div>
-        <button onClick={this.onClickButtonCreate}>Criar playlist</button>
-        <button onClick={this.onClickButtonView}>Visualizar playlists</button>
+      <BigContainer>
         {renderize()}
-      </div>
+      </BigContainer>
     );
   };
 }
