@@ -44,14 +44,22 @@ const ContainerMusic = styled.div`
 `;
 
 const TrackContainer = styled.div`
+    display: grid;
+    grid-template-columns: 3fr 1fr;
     li{
         color: white;
         text-align: center;
     };
     audio{
-        width: 95%;
-        padding: 8px;
+        width: 125%;
+        padding: 5px;
         height: 45px;
+
+        :focus{
+            outline: none;
+           box-shadow: 1px 1px 8px #ffc95c;
+           border-radius: 25px;
+        }
     }
 
     @media (min-width: 680px){
@@ -64,6 +72,12 @@ const TrackContainer = styled.div`
             margin-left: 5px;
         }
     }
+`;
+
+const ImageDel = styled.img`
+    width: 25px;
+    margin-left: 15px;
+    margin-top: 6px;
 `;
 
 const Button = styled.button`
@@ -89,7 +103,7 @@ const Button = styled.button`
       height: 50px;
       width: 45%;
       border-radius: 40px;
-      font-size: 2.5rem;
+      font-size: 197%;
   }
 `;
 
@@ -122,7 +136,7 @@ const ButtonDefault = styled.button`
   @media (min-width: 680px){
       height: 50px;
       width: 35%;
-      font-size: 2.2rem;
+      font-size: 130%;
   }
 `;
 
@@ -164,6 +178,27 @@ state={
         })
     };
 
+    deleteTrack = (playlistId, trackId) =>{
+        const request = axios.delete (`https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${playlistId}/tracks/${trackId}`,
+            {
+                headers:{
+                    Authorization: "claudia-trevisan-jackson"
+                }
+            }
+        );
+        request
+        .then((response)=>{
+            alert("Exclusão realizada com sucesso")
+            this.getTracks(playlistId)
+        })
+        .catch((error)=>{
+            alert("Ocorreu um erro")
+        });
+    };
+
+    onClickDelete = (idPlay, idTrack) =>{
+        this.deleteTrack(idPlay, idTrack)
+    };
 
     onClickRenderAdd = () =>{
         this.setState({renderAdd: !this.state.renderAdd, idPlaylist: this.props.idDetails})
@@ -190,7 +225,7 @@ state={
                             return(
                             <TrackContainer>
                                 <li key={track.id}>{track.name}</li>
-
+                                <ImageDel src="delete.png" alt="Excluir" onClick={()=>this.onClickDelete(this.props.idDetails, track.id)}></ImageDel>
                                 <audio key={track.name} controls >
                                     <source src={track.url} type={"audio/mp3"}></source>
                                 </audio>

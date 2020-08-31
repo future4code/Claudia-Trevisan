@@ -52,7 +52,7 @@ const DivButton = styled.div`
     display: flex;
     margin-bottom: 5px;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
 
     @media (min-width: 680px){
         margin-top: 6px;
@@ -70,6 +70,8 @@ const Button = styled.button`
   font-weight: 400;
   padding: 4px;
   margin: 6px;
+  margin-left: 0;
+  margin-right: 15px;
 
   :hover{
     background-color: white;
@@ -84,6 +86,10 @@ const Button = styled.button`
   @media (min-width: 680px){
       font-size: 1rem;
   }
+`;
+
+const ImageDel = styled.img`
+    width: 37px;
 `;
 
 const ImageH = styled.img`
@@ -155,7 +161,7 @@ export default class ViewAll extends React.Component{
                             <p key={playlist.id}>{playlist.name}</p>
                             <DivButton>
                                 <Button onClick={()=>this.props.functionDetails(playlist.id, playlist.name)}>Detalhes</Button>
-                                <Button onClick={()=>this.onClickButtonDelete(playlist.id)}>Excluir</Button>
+                                <ImageDel src="delete.png" alt="Excluir" onClick={()=>this.onClicButtonDelete(playlist.id)}></ImageDel>
                             </DivButton>
                         </DivViewAll>
                     ) 
