@@ -161,7 +161,7 @@ export default class ViewAll extends React.Component{
                             <p key={playlist.id}>{playlist.name}</p>
                             <DivButton>
                                 <Button onClick={()=>this.props.functionDetails(playlist.id, playlist.name)}>Detalhes</Button>
-                                <ImageDel src="delete.png" alt="Excluir" onClick={()=>this.onClicButtonDelete(playlist.id)}></ImageDel>
+                                <ImageDel src="delete.png" alt="Excluir" onClick={()=>this.onClickButtonDelete(playlist.id)}></ImageDel>
                             </DivButton>
                         </DivViewAll>
                     ) 
