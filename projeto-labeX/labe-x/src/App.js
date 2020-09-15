@@ -1,12 +1,20 @@
 import React from 'react';
 import styled from 'styled-components'
+import { Router } from './router/Router';
+import Header from './components/header/Header';
+import Footer from './components/footer/Footer'
 
-function App(props) {
+const Main = styled.main`
+  align-items:center;
+  flex: 1;
+`
+
+function App() {
   return (
     <>
-      <Menu/>
+      <Header/>
         <Main>
-          {props.children}
+          <Router/>
         </Main>
       <Footer/>
     </>
