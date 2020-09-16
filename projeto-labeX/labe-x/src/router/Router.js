@@ -19,7 +19,7 @@ export const Router = () =>{
                     <Route exact path="/login">
                         <LoginPage/>
                     </Route>
-                    <Route exact path="/trips">
+                    <Route exact path="/trips/:option">
                         <TripsListPage/>
                     </Route>
                     <Route exact path="/trips/create">

@@ -15,5 +15,4 @@ export function useRequestGet (url, initialState) {
     }, [url])
 
     return data
-
 }

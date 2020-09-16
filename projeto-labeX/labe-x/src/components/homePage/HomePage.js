@@ -5,12 +5,12 @@ import { GoToListTripsPage, GoToLoginPage } from '../../router/GoTo'
 import { Container, Button } from './Styles'
 
 export default function Home() {
-    const history = useHistory()
+    const history = useHistory();
 
     return(
         <Container>
-        <Button onClick={()=> GoToLoginPage(history)}>Login</Button>
-        <Button onClick={()=> GoToListTripsPage(history)}>Trips</Button>
+            <Button onClick={()=> GoToLoginPage(history)}>Login</Button>
+            <Button onClick={()=> GoToListTripsPage(history, "user")}>Trips</Button>
         </Container>
     )
 }
