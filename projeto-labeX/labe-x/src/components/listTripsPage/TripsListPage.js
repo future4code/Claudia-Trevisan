@@ -1,48 +1,85 @@
 import React, { useState, useEffect} from 'react';
-import styled from 'styled-components';
 import axios from 'axios';
 import { useHistory, useParams } from 'react-router-dom'
 import { GoToAddTripPage, GoToTripDetailPage } from '../../router/GoTo';
-import PageDefault from '../pageDefault/PageDefault';
-import { url } from '../../bases/Bases'
-import { useRequestGet } from '../../bases/useRequestGet';
+import { url } from '../../bases/Bases';
+import { SectionTrips, Case, Img, DivUser, DivDefault, Button } from '../listTripsPage/Styles';
 
 export default function TripsList() {
     const history = useHistory();
     const pathParams = useParams()
-    const [getTrips, setGetTrips] = useRequestGet(`${url}/trips`, [])
+    const [getTrips, setGetTrips] = useState([])
+    const [stateDetails, setStateDetails] = useState("")
 
     useEffect(() =>{
-        setGetTrips(useRequestGet)
-    }, [])
+        axios
+        .get(`${url}/trips`)
+        .then((response) =>{
+            setGetTrips(response.data.trips)
+        })
+        .catch((error) =>{
+            alert(error.message)
+        })
+    }, []);
+
+    const handleClick = (id) =>{
+        setStateDetails(id)
+    };
 
 
     return(
-        <PageDefault>
+        <SectionTrips>
+            <Case>
+                <Img src={"spaceship.png"}/>
+            </Case>
+
             {pathParams.option === "default" ? (
-                <div>
+                <DivDefault>
                     {getTrips.map((trip) =>{
                         return(
                             <div>
                                 <p>{trip.name}</p>
-                                <button onClick={()=>GoToTripDetailPage(history,trip.id)}>Details</button>
+                                <Button onClick={()=>GoToTripDetailPage(history,trip.id)}>Details</Button>
                             </div>
                         )
                     })}
                     <button onClick={()=>GoToAddTripPage(history)}>Create</button>
-                </div>
+                </DivDefault>
             ) : (
                 <div>
-                    {getTrips.map((trip) =>{
-                        return(
-                            <div>
-                                <p>{trip.name}</p>
-                                <button>Details</button>
-                            </div>
-                        )
-                    })}
+                    {stateDetails ? ( 
+                        <DivUser>
+                            {getTrips.map((trip) =>{
+                                return(
+                                    <div>
+                                        <h3>
+                                            {trip.name}
+                                        </h3>
+                                        <p>
+                                            Planeta: {trip.planet}<br/>
+                                            {trip.description}<br/>
+                                            Data: {trip.date}<br/>
+                                            Duração: {trip.durationInDays} dias
+                                        </p>
+                                        <Button>Candidatar</Button>
+                                    </div>
+                                )
+                            })}
+                        </DivUser>
+                    ) : (
+                        <DivUser>
+                            {getTrips.map((trip) =>{
+                                return(
+                                    <div>
+                                        <p>{trip.name}</p>
+                                        <Button onClick={()=>handleClick(trip.id)}>Details</Button>
+                                    </div>
+                                )
+                            })}
+                        </DivUser>
+                    )}
                 </div>
             )}
-        </PageDefault>
+        </SectionTrips>
     );
 }

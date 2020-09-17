@@ -11,15 +11,15 @@ export default function AddTrip() {
     useEffect(() =>{
         const token = localStorage.getItem("token");
         
-        if(token){
-            return(
-                <>
-                Formulario
-                </>
-            )
-        }
-        else{
+        if(!token){
             GoToHomePage(history)
         }
     }, []);
+
+    return(
+        <>
+        Formulario
+        </>
+    )
+
 }

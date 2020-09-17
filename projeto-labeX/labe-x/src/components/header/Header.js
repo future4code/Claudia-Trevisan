@@ -10,7 +10,7 @@ export default function Header() {
 
     return(
         <DivHeader>
-            <Img src={"de-volta.svg"} alt={"Voltar"} onClick={()=>GoBack(history)}/>
+            <Img src={"back.svg"} alt={"Voltar"} onClick={()=>GoBack(history)}/>
         </DivHeader>
     )
 }

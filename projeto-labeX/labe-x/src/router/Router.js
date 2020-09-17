@@ -6,6 +6,7 @@ import TripsListPage from '../components/listTripsPage/TripsListPage';
 import ApplyToTripPage from '../components/applyTripPage/ApplyToTripPage';
 import TripDetailPage from '../components/tripDetailPage/TripDetailPage';
 import AddTripPage from '../components/addTripPage/AddTripPage'
+import PageDefault from '../components/pageDefault/PageDefault';
 
 export const Router = () =>{
 
@@ -16,6 +17,7 @@ export const Router = () =>{
                     <Route exact path="/">
                         <HomePage/>
                     </Route>
+                    <PageDefault>
                     <Route exact path="/login">
                         <LoginPage/>
                     </Route>
@@ -31,6 +33,7 @@ export const Router = () =>{
                     <Route exact path="/trips/details/apply">
                         <ApplyToTripPage/>
                     </Route>
+                    </PageDefault>
                     <Route >
                         <div>Erro 404</div>
                     </Route>

@@ -1,11 +1,12 @@
 import React, { useState, useEffect} from 'react';
 import axios from 'axios';
 import { useInput } from '../../bases/useInput';
-import { SectionFormLogin, Input, Button } from './Styles'
+import { SectionFormLogin, Input, Button, Case, Img } from './Styles'
 import { useHistory } from 'react-router-dom';
 import PageDefault from '../pageDefault/PageDefault';
-import { GoToHomePage, GoToListTripsPage } from '../../router/GoTo';
+import { GoToListTripsPage } from '../../router/GoTo';
 import { url } from '../../bases/Bases'
+
 
 
 export default function Login() {
@@ -18,9 +19,6 @@ export default function Login() {
         
         if(token){
             GoToListTripsPage(history, "default")
-        }
-        else{
-            GoToHomePage(history)
         }
     }, []);
 
@@ -47,6 +45,9 @@ export default function Login() {
                 <Input value={password} onChange={setPassword} placeholder={"Senha"}/>
                 <Button onClick={requestPost}>Login</Button>
             </SectionFormLogin>
+            <Case>
+                <Img src={"spaceship.svg"}/>
+            </Case>
         </PageDefault>
     );
 }
