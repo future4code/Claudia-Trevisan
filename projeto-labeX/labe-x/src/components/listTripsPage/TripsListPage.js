@@ -32,7 +32,7 @@ export default function TripsList() {
                 <Img src={ship}/>
             </Case>
 
-            {!pathParams ? (
+            {pathParams.option === false ? (
                 <Carousel>
                     {getTrips.map((trip) =>{
                         return(

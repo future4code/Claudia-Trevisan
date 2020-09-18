@@ -12,6 +12,7 @@ export default function TripDetail() {
     const [tripDetail, setTripDetail] = useState({});
     const [decideCandidate, setDecideCandidate] = useState(null)
 
+
     const token = localStorage.getItem("token");
 
     const requestPut = (idCandidate, decide) =>{
@@ -22,7 +23,7 @@ export default function TripDetail() {
         }
 
         axios
-        .put(`${url}/trips/${pathParams}/candidates/${idCandidate}/decide`, body,
+        .put(`${url}/trips/${pathParams.idTripDetail}/candidates/${idCandidate}/decide`, body,
         {
             headers:{
                 auth: token
@@ -37,20 +38,20 @@ export default function TripDetail() {
     };
 
     useEffect(() =>{
-        if(!token) {
+        if(!token || !pathParams.idTripDetail) {
             goToHomePage(history)
         }
         else{
             axios
-            .get(`${url}/trip/${pathParams}`,
+            .get(`${url}/trip/${pathParams.idTripDetail}`,
             {
                 headers:{
                     auth: token
                 }
             })
             .then((response) =>{
-                console.log(response);
-                setTripDetail(response.data)
+                console.log(response.data)
+                setTripDetail(response.data.trip)
             })
             .catch((error) =>{
                 alert(error.message)
