@@ -1,30 +1,28 @@
-export const GoBack = (history) =>{
-    history.GoBack();
+export const goBack = (history) =>{
+    history.goBack();
 };
 
-export const GoToHomePage = (history) =>{
+export const goToHomePage = (history) =>{
     history.push("/");
 };
 
-export const GoToLoginPage = (history) =>{
+export const goToLoginPage = (history) =>{
     history.push("/login");
 };
 
-export const GoToListTripsPage = (history, option) =>{
-    const setOption = option ? option : "user";
-    history.push(`/trips/${setOption}`);
+export const goToListTripsPage = (history, option) =>{
+    history.push(`/trips/${option}`);
 };
 
-export const GoToAddTripPage = (history) =>{
+export const goToAddTripPage = (history) =>{
     history.push("/trips/create");
 };
 
-export const GoToTripDetailPage = (history, id) =>{
-    const Id = id 
-    history.push(`/trips/details/${Id}`);
+export const goToTripDetailPage = (history, idTripDetail) =>{
+    history.push(`/trips/details/${idTripDetail}`);
 };
 
-export const GoToApplyToTripPage = (history) =>{
-    history.push("/trips/details/apply");
+export const goToApplyToTripPage = (history, idTrip) =>{
+    history.push(`/trips/apply/${idTrip}`);
 };
 

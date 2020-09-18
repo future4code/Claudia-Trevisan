@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { Animation } from '../homePage/Styles'
 
 
-export const SectionFormLogin = styled.section`
+export const SectionFormLogin = styled.form`
     display: flex;
     flex-direction: column;
     align-items: center;

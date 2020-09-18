@@ -21,16 +21,16 @@ export const Router = () =>{
                     <Route exact path="/login">
                         <LoginPage/>
                     </Route>
-                    <Route exact path="/trips/:option">
+                    <Route exact path="/trips/:opTion">
                         <TripsListPage/>
                     </Route>
                     <Route exact path="/trips/create">
                         <AddTripPage/>
                     </Route>
-                    <Route exact path="/trips/details">
+                    <Route exact path="/trips/details/:idTripDetail">
                         <TripDetailPage/>
                     </Route>
-                    <Route exact path="/trips/details/apply">
+                    <Route exact path="/trips/apply/:idTrip">
                         <ApplyToTripPage/>
                     </Route>
                     </PageDefault>

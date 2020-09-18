@@ -1,15 +1,18 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect, Component} from 'react';
 import axios from 'axios';
 import { useHistory, useParams } from 'react-router-dom'
-import { GoToAddTripPage, GoToTripDetailPage } from '../../router/GoTo';
 import { url } from '../../bases/Bases';
-import { SectionTrips, Case, Img, DivUser, DivDefault, Button } from '../listTripsPage/Styles';
+import { SectionTrips, Case, Img, DivUser, Button } from '../listTripsPage/Styles';
+import ship from '../../img/spaceship.svg';
+import {Carousel} from './Styles'
+import { goToApplyToTripPage, goToTripDetailPage } from '../../router/GoTo';
+
+
 
 export default function TripsList() {
     const history = useHistory();
+    const [getTrips, setGetTrips] = useState([]);
     const pathParams = useParams()
-    const [getTrips, setGetTrips] = useState([])
-    const [stateDetails, setStateDetails] = useState("")
 
     useEffect(() =>{
         axios
@@ -22,63 +25,51 @@ export default function TripsList() {
         })
     }, []);
 
-    const handleClick = (id) =>{
-        setStateDetails(id)
-    };
-
 
     return(
         <SectionTrips>
             <Case>
-                <Img src={"spaceship.png"}/>
+                <Img src={ship}/>
             </Case>
 
-            {pathParams.option === "default" ? (
-                <DivDefault>
+            {!pathParams ? (
+                <Carousel>
                     {getTrips.map((trip) =>{
                         return(
-                            <div>
-                                <p>{trip.name}</p>
-                                <Button onClick={()=>GoToTripDetailPage(history,trip.id)}>Details</Button>
-                            </div>
-                        )
+                            <DivUser>
+                                <h3>
+                                    {trip.name}
+                                </h3>
+                                <p>
+                                    Planeta: {trip.planet}<br/>
+                                    {trip.description}<br/>
+                                    Data: {trip.date}<br/>
+                                    Duração: {trip.durationInDays} dias
+                                </p>
+                                <Button onClick={()=>goToApplyToTripPage(history, trip.id)}>Increver-se</Button>
+                            </DivUser>
+                        );
                     })}
-                    <button onClick={()=>GoToAddTripPage(history)}>Create</button>
-                </DivDefault>
+                </Carousel>
             ) : (
-                <div>
-                    {stateDetails ? ( 
-                        <DivUser>
-                            {getTrips.map((trip) =>{
-                                return(
-                                    <div>
-                                        <h3>
-                                            {trip.name}
-                                        </h3>
-                                        <p>
-                                            Planeta: {trip.planet}<br/>
-                                            {trip.description}<br/>
-                                            Data: {trip.date}<br/>
-                                            Duração: {trip.durationInDays} dias
-                                        </p>
-                                        <Button>Candidatar</Button>
-                                    </div>
-                                )
-                            })}
-                        </DivUser>
-                    ) : (
-                        <DivUser>
-                            {getTrips.map((trip) =>{
-                                return(
-                                    <div>
-                                        <p>{trip.name}</p>
-                                        <Button onClick={()=>handleClick(trip.id)}>Details</Button>
-                                    </div>
-                                )
-                            })}
-                        </DivUser>
-                    )}
-                </div>
+                <Carousel>
+                    {getTrips.map((trip) =>{
+                        return(
+                            <DivUser>
+                                <h3>
+                                    {trip.name}
+                                </h3>
+                                <p>
+                                    Planeta: {trip.planet}<br/>
+                                    {trip.description}<br/>
+                                    Data: {trip.date}<br/>
+                                    Duração: {trip.durationInDays} dias
+                                </p>
+                                <Button onClick={()=>goToTripDetailPage(history, trip.id)}>Detalhes</Button>
+                            </DivUser>
+                        );
+                    })}
+                </Carousel>
             )}
         </SectionTrips>
     );
