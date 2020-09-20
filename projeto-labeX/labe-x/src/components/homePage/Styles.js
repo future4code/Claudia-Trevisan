@@ -39,8 +39,12 @@ export const Container = styled.div`
     min-height: 100vh;
     align-items: center;
     justify-content: unset;
-    background-image: linear-gradient(1deg, black, #e9e9e9e0);
     position: relative;
+
+    @media (min-width: 440px){
+      max-width:75vw;
+      align-self: center;
+    }
 `;
 
 export const DivButton = styled.div`
@@ -49,6 +53,7 @@ export const DivButton = styled.div`
     flex-direction: column;
     width: 100%;
     justify-content: center;
+    align-items: center;
 `;
 
 export const Button = styled.button`
@@ -59,7 +64,6 @@ export const Button = styled.button`
     background-color: #f0f8ff;
     border: 1px solid #97adc1;
     cursor: pointer;
-    margin-left: 4.2em;
     
     :focus{
         outline: none;
@@ -76,14 +80,3 @@ export const Img = styled.img`
     width: 100px;
     animation: ${Animation} 12s infinite;
 `;
-
-
-// export const Button = styled.button`
-//     margin: 8px;
-//     min-width: 70%;
-//     outline: none;
-//     border:none;
-//     background-color: darkorange;
-//     border-radius: 10px;
-//     height: 28px;
-// `;

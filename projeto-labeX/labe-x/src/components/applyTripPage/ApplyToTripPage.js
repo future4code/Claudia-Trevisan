@@ -3,6 +3,8 @@ import axios from 'axios'
 import { useHistory, useParams } from 'react-router-dom';
 import { useForm } from '../../bases/UseInput';
 import { url } from '../../bases/Bases';
+import { SectionForm, Input, TextArea, Select, Button, Case, Img } from './Styles';
+import ship from '../../img/spaceship.svg'
 
 export default function ApplyToTrip() {
     const history = useHistory();
@@ -58,8 +60,8 @@ export default function ApplyToTrip() {
     }, [])
 
     return(
-        <form onSubmit={clickSubmition}>
-            <input type="text" 
+        <SectionForm onSubmit={clickSubmition}>
+            <Input type="text" 
             value={form.name} 
             name="name" 
             onChange={inputChange} 
@@ -68,7 +70,7 @@ export default function ApplyToTrip() {
             required 
             placeholder="Nome"
             />
-            <input type="number" 
+            <Input type="number" 
             value={form.age} 
             name="age" 
             onChange={inputChange} 
@@ -76,17 +78,17 @@ export default function ApplyToTrip() {
             required 
             placeholder="Idade"
             />
-            <input type="text" 
+            <TextArea type="text" 
             value={form.applicationText} 
             name="applicationText" 
             onChange={inputChange}
-            // pattern="[A-Za-z]{30,}" 
+            pattern="[A-Za-z]{30,}" 
             minLength="30"
             title="Minimo 30 caracteres" 
             required 
             placeholder="Porque devemos te escolher"
             />
-            <input type="text" 
+            <Input type="text" 
             value={form.profession} 
             name="profession" 
             onChange={inputChange}
@@ -95,19 +97,22 @@ export default function ApplyToTrip() {
             required 
             placeholder="Profissão"
             />
-            <select name="country"
+            <Select name="country"
             value={form.country}
             onChange={inputChange}
             placeholder="País"
             required>
-                <option value=""></option>
+                <option value="">País</option>
                 {countries.map((country)=>{
                     return(
                     <option id={country.name} value={country.name}>{country.name}</option>
                     )
                 })}
-            </select>
-            <button>Inncrever-se</button>
-        </form>    
+            </Select>
+            <Button>Inscrever-se</Button>
+            <Case>
+                <Img src={ship}/>
+            </Case>
+        </SectionForm>    
     )
 }

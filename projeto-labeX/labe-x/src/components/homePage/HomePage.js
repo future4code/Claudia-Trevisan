@@ -1,5 +1,4 @@
-import React, { useState, useEffect} from 'react';
-import axios from 'axios';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { goToListTripsPage, goToLoginPage } from '../../router/GoTo'
 import { Container, Case, Img, DivButton, Button } from './Styles'
@@ -11,7 +10,7 @@ export default function Home() {
     return(
         <Container>
             <DivButton>
-                <Button onClick={()=> goToLoginPage(history)}>Login</Button>
+                <Button onClick={()=>goToLoginPage(history)}>Login</Button>
                 <Button onClick={()=> goToListTripsPage(history, false)}>Trips</Button>
                 </DivButton>
             <Case>

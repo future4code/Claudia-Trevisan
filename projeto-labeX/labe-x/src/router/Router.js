@@ -21,11 +21,8 @@ export const Router = () =>{
                     <Route exact path="/login">
                         <LoginPage/>
                     </Route>
-                    <Route exact path="/trips/:opTion">
+                    <Route exact path="/trips/:option">
                         <TripsListPage/>
-                    </Route>
-                    <Route exact path="/trips/create">
-                        <AddTripPage/>
                     </Route>
                     <Route exact path="/trips/details/:idTripDetail">
                         <TripDetailPage/>
@@ -33,8 +30,11 @@ export const Router = () =>{
                     <Route exact path="/trips/apply/:idTrip">
                         <ApplyToTripPage/>
                     </Route>
+                    <Route exact path="/trips/create/:difer">
+                        <AddTripPage/>
+                    </Route>
                     </PageDefault>
-                    <Route >
+                    <Route>
                         <div>Erro 404</div>
                     </Route>
                 </Switch>

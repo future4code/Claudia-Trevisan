@@ -1,3 +1,4 @@
+
 export const goBack = (history) =>{
     history.goBack();
 };
@@ -14,8 +15,8 @@ export const goToListTripsPage = (history, option) =>{
     history.push(`/trips/${option}`);
 };
 
-export const goToAddTripPage = (history) =>{
-    history.push("/trips/create");
+export const goToAddTripPage = (history, difer) =>{
+    history.push(`/trips/create/${difer}`);
 };
 
 export const goToTripDetailPage = (history, idTripDetail) =>{

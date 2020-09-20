@@ -10,7 +10,11 @@ export const SectionFormLogin = styled.form`
     min-height: 100vh;
     margin: 0px;
     justify-content: center;
-    background-image: linear-gradient(1deg, black, #e9e9e9e0);
+
+    @media (min-width: 440px){
+      max-width:75vw;
+      align-self: center;
+    }
 `;
 
  export const Input = styled.input`
@@ -22,6 +26,14 @@ export const SectionFormLogin = styled.form`
 
     ::placeholder{
         font-size: 1.3rem;
+    };
+
+    @media (min-width: 440px){
+        max-width: 70%;
+    };
+
+    @media (min-width: 800px){
+        max-width: 40%;
     }
  `;
 
@@ -39,12 +51,20 @@ export const SectionFormLogin = styled.form`
         outline: none;
         box-shadow: 0px 1px 4px whitesmoke;
     }
+
+    @media (min-width: 800px){
+        max-width: 30%;
+    }
  `;
 
 export const Case = styled.div`
     position: absolute;
     bottom: 8em;
     left: 9.3em;
+
+    /* @media (min-width: ){
+
+    } */
 `;
     
 export const Img = styled.img`

@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { Animation } from '../homePage/Styles';
 import SlickSlider from 'react-slick'
-import Slider from 'react-slick';
 import React from 'react'
 
 const Container = styled.div`
@@ -80,6 +79,12 @@ export const Button = styled.button`
     }
 `;
 
+export const ImgCreate = styled.img`
+    height: 30px;
+    position: absolute;
+    top: 1.3em;
+    right: 2em;
+`;
 
 export const DivDefault = styled.div`
     

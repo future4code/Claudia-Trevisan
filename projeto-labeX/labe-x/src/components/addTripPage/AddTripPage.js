@@ -1,9 +1,12 @@
-import React, { useState, useEffect} from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios'
 import { url } from '../../bases/Bases';
-import { goToHomePage, goToListTripsPage } from '../../router/GoTo';
+import { goToHomePage, goToAddTripPage } from '../../router/GoTo';
 import { useHistory } from 'react-router-dom';
 import { useForm } from '../../bases/UseInput';
+import { Input, SectionFormAdd, Button, Case, Img, Select, ImgCreate, TextArea } from './Styles';
+import ship from '../../img/spaceship.svg';
+import plus from '../../img/plus.svg'
 
 const date = new Date()
 date.setDate(date.getDate());
@@ -11,8 +14,8 @@ date.setDate(date.getDate());
 
 export default function AddTrip() {
     const history = useHistory();
-    const token = localStorage.getItem("token")
-    const { form, onChange, resetState } = useForm({name:"", planet:"", date:"", description:"", durationInDays:""})
+    const token = localStorage.getItem("token");
+    const { form, onChange, resetState } = useForm({name:"", planet:"", date:"", description:"", durationInDays:""});
 
     const requestPost = () =>{
         const body = {
@@ -31,7 +34,7 @@ export default function AddTrip() {
             } 
          })
         .then((response) =>{
-            goToListTripsPage(history, true);
+            // goToListTripsPage(history, true);
             resetState();
         })
         .catch((error) =>{
@@ -48,9 +51,9 @@ export default function AddTrip() {
 
     const clickSubmition = (event) =>{
         event.preventDefault();
-        console.log(form)
+        // console.log(form)
         // if(form.date > date){
-        //     requestPost();
+            requestPost();
         // }
         // else{
         //     alert("Data incorreta")
@@ -64,70 +67,76 @@ export default function AddTrip() {
     }, []);
 
     return(
-        <form onSubmit={clickSubmition}>
-            <input type="text" 
-            value={form.name} 
-            name="name" 
-            onChange={inputChange} 
-            pattern="[A-Za-z]{5,}" 
-            title="No minimo 5 letras" 
-            required 
-            placeholder="Nome da Viagem"
-            />
-            <select value={form.planet} name="planet" onChange={inputChange} placeholder="Planeta" required >
-                <option value=""></option>
-                <option value="mercurio">
-                    Mercúrio
-                </option>
-                <option value="venus">
-                    Vênus
-                </option>
-                <option value="marte">
-                    Marte
-                </option>
-                <option value="">
-                    Jupiter
-                </option>
-                <option value="saturno">
-                    Saturno
-                </option>
-                <option value="urano">
-                    Urano
-                </option>
-                <option value="netuno">
-                    Netuno
-                </option>
-                <option value="plutao">
-                    Plutão
-                </option>
-            </select>
-            <input type="date" 
-            value={form.date} 
-            name="date" 
-            onChange={inputChange} 
-            title="Data Incorreta" 
-            required 
-            placeholder="Data"
-            />
-            <input type="text" 
-            value={form.description} 
-            name="description" 
-            onChange={inputChange}
-            pattern="[A-Za-z]\d{30,}" 
-            title="Minimo 30 caracteres" 
-            required 
-            placeholder="Descrção"
-            />
-            <input type="number" 
-            value={form.durationInDays} 
-            name="durationInDays" 
-            onChange={inputChange} 
-            min= "50"
-            required 
-            placeholder="Duração em dias"
-            />
-            <button>Criar</button>
-        </form>
-    )
+        <>
+            <SectionFormAdd onSubmit={clickSubmition}>
+                <Input type="text" 
+                value={form.name} 
+                name="name" 
+                onChange={inputChange} 
+                pattern="[A-Za-z]{5,}" 
+                title="No minimo 5 letras" 
+                required 
+                placeholder="Nome da Viagem"
+                />
+                <Select value={form.planet} name="planet" onChange={inputChange} placeholder="Planeta" required >
+                    <option value="">Planeta</option>
+                    <option value="mercurio">
+                        Mercúrio
+                    </option>
+                    <option value="venus">
+                        Vênus
+                    </option>
+                    <option value="marte">
+                        Marte
+                    </option>
+                    <option value="">
+                        Jupiter
+                    </option>
+                    <option value="saturno">
+                        Saturno
+                    </option>
+                    <option value="urano">
+                        Urano
+                    </option>
+                    <option value="netuno">
+                        Netuno
+                    </option>
+                    <option value="plutao">
+                        Plutão
+                    </option>
+                </Select>
+                <Input type="date" 
+                value={form.date} 
+                name="date" 
+                onChange={inputChange} 
+                title="Data Incorreta" 
+                required 
+                placeholder="Data"
+                />
+                <TextArea type="text" 
+                value={form.description} 
+                name="description" 
+                onChange={inputChange}
+                pattern="[A-Za-z]\d{30,}" 
+                title="Minimo 30 caracteres" 
+                required 
+                placeholder="Descrição"
+                />
+                <Input type="number" 
+                value={form.durationInDays} 
+                name="durationInDays" 
+                onChange={inputChange} 
+                min= "50"
+                required 
+                placeholder="Duração em dias"
+                />
+                <Button>Criar</Button>
+            </SectionFormAdd>
+            <ImgCreate src={plus} onClick={()=>goToAddTripPage(history)}/>
+            <Case>
+                <Img src={ship}/>
+            </Case>
+        </>
+    );
 
 }

@@ -5,10 +5,11 @@ export const DivHeader = styled.div`
     margin-left: 23px;
     align-items: center;
     position: absolute;
-    top: 1em;
+    top: .7em;
 `;
 
 export const Img = styled.img`
     width: 60px;
     height: 50px;
 `;
+

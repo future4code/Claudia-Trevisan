@@ -28,7 +28,7 @@ export default function Login() {
         const token = localStorage.getItem("token");
         
         if(token){
-            goToListTripsPage(history, true);
+            goToListTripsPage(history, "true");
         }
     }, []);
 
@@ -41,7 +41,7 @@ export default function Login() {
         .post(`${url}/login`, body)
         .then((response) =>{
             localStorage.setItem("token", response.data.token);
-            goToListTripsPage(history, true);
+            goToListTripsPage(history, "true");
             resetState();
         })
         .catch((error) =>{
