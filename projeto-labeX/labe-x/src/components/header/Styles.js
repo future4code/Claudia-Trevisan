@@ -11,5 +11,6 @@ export const DivHeader = styled.div`
 export const Img = styled.img`
     width: 60px;
     height: 50px;
+    cursor: pointer;
 `;
 

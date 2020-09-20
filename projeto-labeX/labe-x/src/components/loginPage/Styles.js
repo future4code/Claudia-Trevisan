@@ -12,7 +12,6 @@ export const SectionFormLogin = styled.form`
     justify-content: center;
 
     @media (min-width: 440px){
-      max-width:75vw;
       align-self: center;
     }
 `;
@@ -60,11 +59,28 @@ export const SectionFormLogin = styled.form`
 export const Case = styled.div`
     position: absolute;
     bottom: 8em;
-    left: 9.3em;
+    left: 8em;
 
-    /* @media (min-width: ){
+    @media (min-width: 440px){
+        left: 13em;
+    };
+    @media (min-width: 600px){
+        left: 18em;
+    };
 
-    } */
+    @media (min-width: 800px){
+        left: 26em;
+    };
+
+    @media (min-width: 980px){
+        left: 33em;
+    };
+
+    @media (min-width: 1024px){
+        left: 50em;
+    }
+
+
 `;
     
 export const Img = styled.img`

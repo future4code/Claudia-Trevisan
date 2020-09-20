@@ -3,8 +3,7 @@ import axios from 'axios';
 import { useHistory, useParams } from 'react-router-dom';
 import { goToAddTripPage, goToHomePage } from '../../router/GoTo';
 import { url } from '../../bases/Bases';
-import { Carousel } from '../listTripsPage/Styles';
-import { DivCandidates, DivButtons, SectionCandidates, ImgCreate, DivTrip, Case, Img, ImgOk, ImgCancel } from './Styles'
+import { Carousel, DivCandidates, DivButtons, SectionCandidates, ImgCreate, DivTrip, Case, Img, ImgOk, ImgCancel } from './Styles'
 import plus from '../../img/plus.svg';
 import ship from '../../img/spaceship.svg';
 import ok from '../../img/tick.svg';

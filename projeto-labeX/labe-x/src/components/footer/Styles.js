@@ -13,8 +13,6 @@ export const DivFooter = styled.div`
     }
 
     @media (min-width: 440px){
-        width: 100vw;
-
         P{
             text-align: center;
         }

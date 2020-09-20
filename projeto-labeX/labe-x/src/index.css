@@ -19,4 +19,5 @@ code {
   background-image:  linear-gradient(1deg,black,#e9e9e963), url("wallpaper-5045169_960_720.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  background-blend-mode: color-burn;
 }
