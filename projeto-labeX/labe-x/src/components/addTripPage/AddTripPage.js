@@ -73,7 +73,7 @@ export default function AddTrip() {
                 value={form.name} 
                 name="name" 
                 onChange={inputChange} 
-                pattern="[A-Za-z]{5,}" 
+                pattern="[.\s\w]{5,}" 
                 title="No minimo 5 letras" 
                 required 
                 placeholder="Nome da Viagem"
@@ -117,7 +117,7 @@ export default function AddTrip() {
                 value={form.description} 
                 name="description" 
                 onChange={inputChange}
-                pattern="[A-Za-z]\d{30,}" 
+                pattern="[.\s\w]{30,}" 
                 title="Minimo 30 caracteres" 
                 required 
                 placeholder="Descrição"

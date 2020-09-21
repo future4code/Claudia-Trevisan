@@ -82,7 +82,7 @@ export default function ApplyToTrip() {
             value={form.applicationText} 
             name="applicationText" 
             onChange={inputChange}
-            pattern="[A-Za-z]{30,}" 
+            pattern="[.\s\w]{30,}" 
             minLength="30"
             title="Minimo 30 caracteres" 
             required 
@@ -92,7 +92,7 @@ export default function ApplyToTrip() {
             value={form.profession} 
             name="profession" 
             onChange={inputChange}
-            pattern="[A-Za-z]{10,}" 
+            pattern="[.\s\w]{10,}" 
             title="Minimo 10 caracteres" 
             required 
             placeholder="Profissão"
