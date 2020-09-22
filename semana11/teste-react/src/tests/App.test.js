@@ -5,13 +5,13 @@ import App from '../App'
 
 
 test("Verifica post", () =>{
-    const { getByText, getByPlaceholderText, getByDisplayValue, findByText } = render(<App/>)
+    const { getByText, getByPlaceholderText, getByDisplayValue, findByText, queryByText } = render(<App/>)
 
     getByText(/Nenhum Post/i);
 
     let input = getByPlaceholderText(/Novo Post/i);
     
-    fireEvent.change(input);
+    fireEvent.change(input, {target: {value: "texto"}});
 
     const button = getByText(/Adicionar/i);
 
