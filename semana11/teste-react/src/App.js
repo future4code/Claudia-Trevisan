@@ -14,7 +14,7 @@ const App = () => {
 
   const addPost = () => {
     if(inputValue === ""){
-      setStateInput(!stateInput)
+      setStateInput(true)
     }
     else{
     // Adiciona um post à lista
@@ -28,9 +28,10 @@ const App = () => {
 
     setPostsList(newPostsList);
 
-    setInputValue("");
+    setStateInput(false)
 
-    }
+    setInputValue("");
+  }
   };
 
   const deletePost = postId => {
