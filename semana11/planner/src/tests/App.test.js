@@ -1,44 +1,113 @@
 import React from 'react';
-import { render, fireEvent, screen } from '@testing-library/react';
+import { render, fireEvent, screen, wait, findByText } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect'
 import App from '../App';
+import axios from 'axios';
+import userEvent from '@testing-library/user-event'
+import { url } from '../components/base/Base';
 
-test("Verifica planner", () =>{
-    const { getByText, getByPlaceholderText } = render(<App/>);
+describe("Planner", () =>{
+    const createTask = async (taskText) =>{
+        const input = screen.getByPlaceholderText("Nova tarefa");
 
-    screen.getByText(/feira/i);
-    
-    screen.getByText(/sabado/i);
+        await userEvent.type(input, taskText);
+
+        expect(input).toHaveValue(taskText);
      
-    screen.getByText(/domingo/i);
+        const select = screen.getByText(/selecione/i)
+        
+        userEvent.selectOptions(select, "terca");
 
-    const input = screen.getByPlaceholderText("Nova tarefa");
+        
+        expect(screen.findByDisplayValue("terca").selected).toBe(true);
+        
+        const buttonCreate = screen.getByText("Criar");
 
-    fireEvent.change(input, {target: {value: "Texto teste"}});
+        fireEvent.click(buttonCreate)
+    };
 
-    expect(input).toHaveValue("Texto teste");
+    const createTaskAndRender = async () =>{
+        const utils = render(<App/>);
 
-    const select = screen.getByDisplayValue("Selecione o dia da semana");
+        await createTask("Teste");
 
-    fireEvent.change(select, {target: {value: "Segunda-feira"}});
+        return utils
+    };
 
-    expect(select).toHaveValue("Segunda-feira")
+    test("verifica metodo get - useEffect", async() =>{
+        axios.get = jest.fn().mockResolvedValue({data: [ {day: "terca", id: "123", text: "Teste" } ]});
+        const { findByText } = render(<App/>);
 
-    const button = screen.getByText("Criar");
+        const task = await findByText("Teste");
 
-    fireEvent.click(button);
+        expect(task).toBeInTheDocument()
 
-    //como verificar se a task foi pro dia certo
+        await wait()
+    });
 
-    const buttonCheck = screen.getByText(/Cumprida/i);
+    test("verifica metodo post e get após nova tarefa", async() =>{
+        axios.post = jest.fn().mockResolvedValue();
+        axios.get = jest.fn().mockResolvedValue([{}]);
 
-    fireEvent.click(buttonCheck);
+        await createTaskAndRender();
 
-    //como verificar se o styled funcionou
+        expect(axios.post).toHaveBeenCalledWith(`${url}`, {text: "Teste", day: "terca"});
 
-    const buttonDelete = screen.getByText(/apagar/i);
+        await wait(() =>{
+            expect(axios.get).toHaveBeenCalledTimes(2)
+        })
+    });
 
-    fireEvent.click(buttonDelete);
+    test("verifica metodo put e styled", async() =>{
+        axios.get = jest.fn().mockResolvedValue({data: [
+            {day: "terca", id: "123", text: "Teste"}
+        ]})
+        axios.put = jest.fn().mockResolvedValue();
+        render(<App/>);
 
-    expect(buttonDelete, buttonCheck).toBeNull()
-});
+        const buttonCheck = await screen.findByText(/marcar/i);
+
+        fireEvent.click(buttonCheck);
+
+        expect(axios.put).toHaveBeenCalledWith(`${url}/`)
+    
+    });
+
+    test("verifica metodo delete", async() =>{
+        axios.get = jest.fn().mockResolvedValue({data: [{day: "terca", id: "123", text: "Teste"}, {day: "quarta", id: "321", text: "Teste1"}]});
+        axios.delete = jest.fn().mockResolvedValue();
+        render(<App/>);
+
+        const buttonDelete = screen.findByText("Apagar");
+
+        fireEvent.click(buttonDelete);
+
+        expect(buttonDelete).tobeNull();
+        expect(axios.delete).toHaveBeenCalledWith(`${url}/123`)
+    });
+
+    test("Verifica planner", () =>{
+        render(<App/>);
+    
+        screen.getAllByText(/feira/i);
+        
+        screen.getByText(/sabado/i);
+         
+        screen.getByText(/domingo/i);
+    
+        //como verificar se a task foi pro dia certo
+    
+        const buttonCheck = screen.findByText(/Marcar/i);
+    
+        fireEvent.click(buttonCheck);
+    
+        //como verificar se o styled funcionou
+    
+        const buttonDelete = screen.findByText(/apagar/i);
+    
+        fireEvent.click(buttonDelete);
+    
+        expect(buttonDelete, buttonCheck).toBeNull()
+    });
+})
+

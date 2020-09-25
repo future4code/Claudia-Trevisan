@@ -1,9 +1,15 @@
 import React from 'react';
+import Newtask from './components/newTask/NewTask';
+import Week from './components/week/Week';
+
+
 
 function App() {
+
   return (
     <div>
-      Hello world
+     <Newtask />
+     <Week />
     </div>
   );
 }
