@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom';
 import { url } from '../../App';
 import { goToHomePage, goToPostPage } from '../../router/GoTo';
-import { useForm } from '../hooksGlobals/Hooks';
+import { useForm, timePassed } from '../hooksGlobals/Hooks';
 import { CardPost, DivFeed } from './StyledFeed'
 
 
@@ -12,35 +12,6 @@ export default function FeedPage() {
     const [posts, setPosts] = useState([]);
     const { form, onChange, resetState } = useForm({text: "", title: ""});
     let token = localStorage.getItem("token");
-
-    const timePassed = (createdAt) => {
-
-        const now = new Date().getTime()
-        const milisseconds = now - createdAt
-        const minutes = milisseconds * 1.6667E-5
-        const hours = Math.floor(milisseconds/(1000 * 60 * 60))
-        const days = Math.floor(hours/24)
-        const months = Math.floor(days/30)
-
-        if (minutes < 1) {
-            return `less than one minute ago`
-        } else if (hours < 1) {
-            return `${Math.ceil(minutes)} minutes ago`
-        } else if (hours === 1) {
-            return `${hours} hour ago`
-        } else if (hours < 24) {
-            return `${hours} hours ago`
-        } else if (days === 1) {
-            return `${days} day ago`
-        } else if (days < 30) {
-            return `${days} days ago`
-        } else if (months === 1) {
-            return `${months} month ago`
-        } else if (months > 1) {
-            return `${months} months ago`
-        }
-    };
-
 
     const requestGetPosts = () =>{
         const headers = {
@@ -151,10 +122,9 @@ export default function FeedPage() {
                 return(
                     <CardPost data-testid={"post-content"}>
                         <div>
-                            <button onClick={()=>onClickButtonVote(post.id, 1)} data-testid={"button-vote1"}>1</button>
+                            <button onClick={()=>onClickButtonVote(post.id, post.userVoteDirection === 0 ? 1 : 0)} data-testid={"button-vote1"}>1</button>
                             {post.votesCount}
-                            {/* {post.userVoteDirection} */}
-                            <button onClick={()=>onClickButtonVote(post.id, -1)} data-testid={"button-vote"}>-1</button>
+                            <button onClick={()=>onClickButtonVote(post.id, post.userVoteDirection === 0 ? -1 : 0)} data-testid={"button-vote"}>-1</button>
                         </div>
                         <div>
                         <p>posted by {post.username}</p> 

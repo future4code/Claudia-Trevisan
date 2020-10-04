@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { url } from '../../App';
 import { goToHomePage } from '../../router/GoTo';
-import { useForm } from '../hooksGlobals/Hooks';
+import { useForm, timePassed } from '../hooksGlobals/Hooks';
 
 
 export default function PostPage () {
@@ -14,34 +14,6 @@ export default function PostPage () {
     const { form, onChange, resetState } = useForm({text: ""});
     let token = localStorage.getItem("token");
     let user = localStorage.getItem("user");
-
-    const timePassed = (createdAt) => {
-
-        const now = new Date().getTime()
-        const milisseconds = now - createdAt
-        const minutes = milisseconds * 1.6667E-5
-        const hours = Math.floor(milisseconds/(1000 * 60 * 60))
-        const days = Math.floor(hours/24)
-        const months = Math.floor(days/30)
-
-        if (minutes < 1) {
-            return `less than one minute ago`
-        } else if (hours < 1) {
-            return `${Math.ceil(minutes)} minutes ago`
-        } else if (hours === 1) {
-            return `${hours} hour ago`
-        } else if (hours < 24) {
-            return `${hours} hours ago`
-        } else if (days === 1) {
-            return `${days} day ago`
-        } else if (days < 30) {
-            return `${days} days ago`
-        } else if (months === 1) {
-            return `${months} month ago`
-        } else if (months > 1) {
-            return `${months} months ago`
-        }
-    };
 
     const requestGetPostDetail = (idPost) =>{
         const headers = {
@@ -148,9 +120,9 @@ export default function PostPage () {
     return(
         <div>
             <div>
-                <button onClick={()=>buttonVotePost(postDetail.id, 1)}>1</button>
+                <button onClick={()=>buttonVotePost(postDetail.id, postDetail.userVoteDirection === 0 ? 1 : 0)}>1</button>
                 {postDetail.votesCount}
-                <button onClick={()=>buttonVotePost(postDetail.id, -1)}>-1</button>
+                <button onClick={()=>buttonVotePost(postDetail.id, postDetail.userVoteDirection === 0 ? -1 : 0)}>-1</button>
                 <p>posted by {postDetail.username}</p> 
                 <span title={new Date(postDetail.createdAt).toString()}>{timePassed(postDetail.createdAt)}</span>
                 <br/>{postDetail.title}
@@ -170,16 +142,15 @@ export default function PostPage () {
             {comments.map((comment) =>{
                 return(
                     <div>
-                        <button onClick={()=>buttonVoteComment(comment.id, 1)}>1</button>
+                        <button onClick={()=>buttonVoteComment(comment.id, comment.userVoteDirection === 0 ? 1 : 0)}>1</button>
                         {comment.votesCount}
-                        <button onClick={()=>buttonVoteComment(comment.id, -1)}>-1</button>
+                        <button onClick={()=>buttonVoteComment(comment.id, comment.userVoteDirection === 0 ? -1 : 0)}>-1</button>
                         <p>posted by {comment.username}</p> 
                         <span title={new Date(comment.createdAt).toString()}>{timePassed(comment.createdAt)}</span>
                         <br/>{comment.text}
                     </div>
                 );
             })}
-
         </div>
     );
 }
