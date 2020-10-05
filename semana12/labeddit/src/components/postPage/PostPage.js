@@ -5,7 +5,6 @@ import { url } from '../../App';
 import { goToHomePage } from '../../router/GoTo';
 import { useForm, timePassed } from '../hooksGlobals/Hooks';
 
-
 export default function PostPage () {
     const history = useHistory();
     const pathParams = useParams();

@@ -9,7 +9,6 @@ const DivHeader = styled.header`
 export default function Header () {
     let user = localStorage.getItem("user")
 
-
     return(
         <DivHeader>
             {user}

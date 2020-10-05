@@ -17,7 +17,6 @@ export const useForm = (initialState) =>{
 };
 
 export const timePassed = (createdAt) => {
-
     const now = new Date().getTime()
     const milisseconds = now - createdAt
     const minutes = milisseconds * 1.6667E-5

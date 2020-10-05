@@ -6,7 +6,6 @@ import { goToHomePage, goToPostPage } from '../../router/GoTo';
 import { useForm, timePassed } from '../hooksGlobals/Hooks';
 import { CardPost, DivFeed } from './StyledFeed'
 
-
 export default function FeedPage() {
     const history = useHistory();
     const [posts, setPosts] = useState([]);
