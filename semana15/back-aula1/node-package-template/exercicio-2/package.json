@@ -1,0 +1,13 @@
+{
+  "name": "exercicio-2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "exercicio2.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node exercicio2.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
