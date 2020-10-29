@@ -1,7 +1,6 @@
 import {connection} from '../index'
-import {Actor} from '../types'
 
-export const allActors = async (): Promise<Actor[]> =>{
+export const allActors = async (): Promise<any> =>{
     try{
         const result = await connection.raw(`SELECT * FROM actor`)
 
@@ -11,3 +10,5 @@ export const allActors = async (): Promise<Actor[]> =>{
         return []
     }
 }
+
+allActors()
