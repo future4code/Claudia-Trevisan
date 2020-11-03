@@ -10,3 +10,13 @@ export type User = {
     nickName: string,
     email: string
 }
+
+export type Task = {
+    id: number,
+    title: string,
+    description: string,
+    limitDate: string,
+    status: string,
+    creatorUserId: number,
+    creatorUserNickName: string
+}

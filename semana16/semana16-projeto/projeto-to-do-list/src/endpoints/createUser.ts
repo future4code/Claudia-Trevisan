@@ -1,5 +1,7 @@
 import {Request, Response} from 'express';
-import {User, STATUS_TASK} from '../types';
+import { allUsers } from '../data/allUsers';
+import { newUser } from '../data/newUser';
+import {User} from '../types';
 
 export const createUser = async (req: Request, res: Response): Promise<void> =>{
     try{
@@ -17,7 +19,7 @@ export const createUser = async (req: Request, res: Response): Promise<void> =>{
             throw new Error("Usuario ja cadastrado")
         }
         
-        await newUser()
+        await newUser(name, nickName, email)
 
         res.status(200)
         .send("Usuario cadastrado com sucesso")

@@ -1,7 +1,12 @@
 import knex from 'knex';
-import express, {Request, Response} from 'express';
+import express from 'express';
 import {AddressInfo} from 'net';
 import dotenv from 'dotenv';
+import { createUser } from './endpoints/createUser';
+import { getUserById } from './endpoints/getUserById';
+import { postEditUser } from './endpoints/postEditUser';
+import { putNewTask } from '../src/endpoints/putNewTask'
+import { getTaskById } from './endpoints/getTaskById';
 
 dotenv.config();
 
@@ -17,6 +22,16 @@ export const connection = knex({
       database: process.env.DB_NAME,
     },
 });
+
+app.put("/tasks/user", createUser);
+
+app.get("/tasks/user/:id", getUserById);
+
+app.post("/tasks/user/edit/:id", postEditUser);
+
+app.put("/tasks/task", putNewTask);
+
+app.get("/tasks/task/:id", getTaskById)
 
 
   
