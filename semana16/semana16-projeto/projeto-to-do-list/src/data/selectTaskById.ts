@@ -8,7 +8,7 @@ export const selectTaskById = async (id: number): Promise<any> =>{
             FROM tasks
             WHERE id = ${id};
         `)
-        return result[0][0]
+        return result[0]
     }
     catch{
         console.log("erro")
