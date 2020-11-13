@@ -1,7 +1,7 @@
 import * as jwt from 'jsonwebtoken'
 import { AuthenticationData } from '../types';
 
-const expiresIn = "60min"
+const expiresIn = "24h"
 
 export const generateToken = (payload: AuthenticationData): string =>{
     const token = jwt.sign({

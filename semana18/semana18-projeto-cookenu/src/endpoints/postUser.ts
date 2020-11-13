@@ -4,6 +4,8 @@ import { insertUser } from '../data/insertUser';
 import { hash } from '../services/hashManager';
 import { generateId } from '../services/idGenerator';
 import { generateToken } from '../services/authenticator'
+import { selectUserByEmail } from '../data/selectUserByEmail';
+import { User } from '../types';
 
 export const postUser = async (req: Request, res: Response): Promise<void> =>{
     try {
@@ -15,12 +17,12 @@ export const postUser = async (req: Request, res: Response): Promise<void> =>{
             res.statusCode = 400
             throw new Error("Email inválido")
         };
-
+        
         const idUser: string = generateId();
 
         const hashPassword: string = await hash(password); 
 
-        await insertUser(idUser, {email: email, name: name, password: hashPassword});
+        await insertUser(idUser, email, name, hashPassword);
 
         const token: string = generateToken({id: idUser, email: email})
 

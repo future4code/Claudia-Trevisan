@@ -3,12 +3,14 @@ import { User } from '../types'
 
 export const insertUser = async (
     id: string,
-    info: User
+    email: string,
+    name: string,
+    password: string
 ): Promise<void> =>{
     await connection.insert({
         id: id,
-        email: info.email,
-        name: info.name,
-        password: info.password
+        email: email,
+        name: name,
+        password: password
     }).into('Users')
 };
