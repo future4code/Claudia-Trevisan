@@ -1,5 +1,4 @@
 import { Request, Response } from 'express'
-import { transformDate } from '../constants/convertDate';
 import { selectFeed } from '../data/selectFeed';
 import { getTokenData } from '../services/authenticator';
 
@@ -21,12 +20,6 @@ export const getFeed = async (req: Request, res: Response): Promise<void> =>{
             throw new Error("Not found");
         }
 
-        // const feedCorrect = feed.map(item =>{
-        //     const date = transformDate(item.date)
-        // })
-        
-        // console.log(feedCorrect)
-        
         res.status(200)
         .send(feed)
     } catch (error) {

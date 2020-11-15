@@ -36,8 +36,18 @@ const createTableRelationsFolowers = async (): Promise<void> =>{
     `)
 };
 
-createTableUsers();
+const createTableRefreshToken = async (): Promise<void> =>{
+    await connection.raw(`
+        CREATE TABLE Refresh_token (
+            refresh_token VARCHAR(255) UNIQUE NOT NULL;
+        );
+    `)
+}
 
-createTableRecipes();
+createTableRefreshToken();
 
-createTableRelationsFolowers();
+// createTableUsers();
+
+// createTableRecipes();
+
+// createTableRelationsFolowers();

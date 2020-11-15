@@ -1,5 +1,4 @@
 import { connection } from '../constants/connection'
-import { User } from '../types'
 
 export const insertUser = async (
     id: string,

@@ -15,12 +15,12 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
-// app.post("/users/signup", postUser);
+app.post("/users/signup", postUser);
 app.post("/users/login", login);
-// app.get("/users/profile", getOwnProfile);
-// app.get("/users/:id", getOtherProfile);
+app.get("/users/profile", getOwnProfile);
+app.get("/users/:id", getOtherProfile);
 app.post("/users/recipe", postRecipe);
-// app.get("/recipe/:id", getRecipeById);
+app.get("/recipe/:id", getRecipeById);
 app.post("/users/follow", postFollow);
 app.post("/users/unfollow", postUnfollow);
 app.get("/users/feed", getFeed)

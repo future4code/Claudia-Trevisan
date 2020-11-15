@@ -3,7 +3,7 @@ import { Request, Response } from 'express'
 import { validation } from '../constants/validation';
 import { selectUserByEmail } from '../data/selectUserByEmail';
 import { generateToken } from '../services/authenticator';
-import { AuthenticationData, User } from '../types';
+import { User } from '../types';
 
 export const login = async (req: Request, res: Response): Promise<void> =>{
     try {
@@ -19,7 +19,7 @@ export const login = async (req: Request, res: Response): Promise<void> =>{
             id: userData.id,
             email: userData.email
         })
-            
+
         res.status(200)
         .send(`Usuário logado. Token: ${newToken}`)
 

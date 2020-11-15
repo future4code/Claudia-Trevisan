@@ -4,8 +4,6 @@ import { insertUser } from '../data/insertUser';
 import { hash } from '../services/hashManager';
 import { generateId } from '../services/idGenerator';
 import { generateToken } from '../services/authenticator'
-import { selectUserByEmail } from '../data/selectUserByEmail';
-import { User } from '../types';
 
 export const postUser = async (req: Request, res: Response): Promise<void> =>{
     try {
