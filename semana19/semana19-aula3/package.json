@@ -4,9 +4,9 @@
    "description": "",
    "main": "index.js",
    "scripts": {
-      "my-sql-setup": "tsc && node ./build/mySqlSetup.js",
-      "start": "npm run build && node --inspect ./build/src/index.js",
-      "dev": "clear && ts-node-dev ./src/index.ts",
+      "my-sql-setup": "ts-node-dev ./src/MySqlSetup.ts",
+      "start": "tsc && node --inspect ./build/index.js",
+      "dev": "ts-node-dev ./src/index.ts",
       "build": "clear && echo \"Transpiling files...\" && tsc && echo \"Done!\" ",
       "test": "jest"
    },
