@@ -1,15 +1,13 @@
 import { Post, PostInput } from "../model/Post";
 import { BaseDatabase } from "./BaseDatabase";
-
+import Migrations from "./Migrations";
 
 class PostDatabase extends BaseDatabase {
-    private static tableName: string = "labook_posts"
-    
-    public getTableName = (): string => PostDatabase.tableName
 
     public createPost = async (post: PostInput): Promise<void> =>{
         try {
-            await BaseDatabase.connection(PostDatabase.tableName).insert({
+
+            await BaseDatabase.connection(Migrations.getTableNamePosts()).insert({
                 id: post.getId(),
                 photo: post.getPhoto(),
                 description: post.getDescription(),
@@ -24,8 +22,9 @@ class PostDatabase extends BaseDatabase {
 
     public getPostById = async (id: string): Promise<Post> =>{
         try {
+
             const result = await BaseDatabase.connection.raw(`
-                SELECT * FROM ${PostDatabase.tableName}
+                SELECT * FROM ${Migrations.getTableNamePosts()}
                 WHERE id = "${id}";
             `)
 
@@ -37,6 +36,7 @@ class PostDatabase extends BaseDatabase {
                 result[0][0].createdAt,
                 result[0][0].authorId
             )
+            
             return post
             
         } catch (error) {
@@ -51,10 +51,10 @@ class PostDatabase extends BaseDatabase {
 
             const result = await BaseDatabase.connection.raw(`
                 SELECT lp.id, lp.photo, lp.description, lp.type, lp.created_at, lp.author_id
-                FROM labook_posts lp
-                LEFT JOIN labook_users lu
+                FROM ${Migrations.getTableNamePosts()} lp
+                LEFT JOIN ${Migrations.getTableNameUsers()} lu
                 ON lp.author_id = lu.id
-                JOIN labook_friendship lf
+                JOIN ${Migrations.getTableNameFriendship()} lf
                 ON lf.id_friend_2 = lu.id
                 WHERE lf.id_friend_1 = "${id}"
                 ORDER BY created_at DESC;
@@ -77,7 +77,7 @@ class PostDatabase extends BaseDatabase {
             const feedType: Post[] = []
 
             const result = await BaseDatabase.connection.raw(`
-                SELECT * FROM labook_posts
+                SELECT * FROM ${Migrations.getTableNamePosts()}
                 WHERE type = "${type}"
                 ORDER BY created_at DESC;
             `)
@@ -89,9 +89,9 @@ class PostDatabase extends BaseDatabase {
             return feedType
 
         } catch (error) {
+
             throw new Error(error.sqlmessage || error.message);
         }
     }
-    
 }
 export default new PostDatabase()

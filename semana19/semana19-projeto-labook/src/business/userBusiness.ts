@@ -1,5 +1,5 @@
 import UserDatabase from "../data/UserDatabase";
-import { AuthenticationData, CreateUserInput, LoginInput, User } from "../model/User";
+import { CreateUserInput, LoginInput, User } from "../model/User";
 import authenticator from "../services/authenticator";
 import hashManager from "../services/hashManager";
 import IdGenerator from "../services/idGenerator";
@@ -7,6 +7,7 @@ import { validation } from "../utils/validation";
 
 
 export class UserBusiness {
+
     public signup = async (input: CreateUserInput): Promise<string> =>{
         try {
             validation(input)
@@ -27,7 +28,9 @@ export class UserBusiness {
             const token = authenticator.generateToken({
                 id
             })
+
             return token
+
         } catch (error) {
             throw new Error(error.sqlMessage || error.message);
         }
@@ -54,45 +57,7 @@ export class UserBusiness {
                 id: user.getId()
             })
 
-
             return token
-        } catch (error) {
-            throw new Error(error.sqlmessage || error.message);
-        }
-    }
-
-    public friendship = async (token: string, id: string): Promise<void> =>{
-        try {
-            validation({id})
-
-            if(!token){
-                throw new Error("verify token");
-            }
-
-            const tokenData: AuthenticationData = authenticator.getTokenData(token)
-
-            if(tokenData.id === id){
-                throw new Error("o id informado é o seu proprio id");
-            }
-
-            await UserDatabase.friendship(id, tokenData.id)
-
-        } catch (error) {
-            throw new Error(error.sqlmessage || error.message);
-        }
-    }
-
-    public unfriendship = async (id: string, token: string): Promise<void> =>{
-        try {
-            validation({id})
-
-            if(!token){
-                throw new Error("verify token");
-            }
-
-            const tokenData: AuthenticationData = authenticator.getTokenData(token)
-
-            await UserDatabase.unfriendship(id, tokenData.id)
 
         } catch (error) {
             throw new Error(error.sqlmessage || error.message);

@@ -1,12 +1,12 @@
 import PostDatabase from "../data/PostDatabase";
-import { CreatePostInput, Post, PostInput, POST_TYPES } from "../model/Post";
+import { CreatePostInput, Post, PostInput } from "../model/Post";
 import { AuthenticationData } from "../model/User";
 import authenticator from "../services/authenticator";
 import idGenerator from "../services/idGenerator";
 import { validation } from "../utils/validation";
 
-
 class PostBusiness {
+
     public createPost = async (input: CreatePostInput, token: string): Promise<void> =>{
         try {
             validation(input)

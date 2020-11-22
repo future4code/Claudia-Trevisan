@@ -1,17 +1,14 @@
 import { User } from '../model/User'
 import { BaseDatabase } from './BaseDatabase'
+import Migrations from './Migrations';
 
 class UserDatabase extends BaseDatabase{
-    private static tableName: string = "labook_users"
-
-    private static tablefriend: string = "labook_friendship"
-
-    public getTableName = ():string => UserDatabase.tableName
 
     public signup = async (user: User): Promise<void> =>{
         try {
+
             await BaseDatabase.connection.raw(`
-            INSERT INTO ${UserDatabase.tableName}
+            INSERT INTO ${Migrations.getTableNameUsers()}
             VALUES (
                 "${user.getId()}",
                 "${user.getName()}",
@@ -19,6 +16,7 @@ class UserDatabase extends BaseDatabase{
                 "${user.getPassword()}"
             );
         `)
+
         } catch (error) {
             throw new Error("Erro do banco: " + error.sqlmessage);
         }
@@ -26,8 +24,9 @@ class UserDatabase extends BaseDatabase{
 
     public selectUserByEmail = async (email: string): Promise<User> =>{
         try {
+
             const result = await BaseDatabase.connection.raw(`
-                SELECT * FROM ${UserDatabase.tableName}
+                SELECT * FROM ${Migrations.getTableNameUsers()}
                 WHERE email = "${email}"
             `)
             
@@ -37,39 +36,6 @@ class UserDatabase extends BaseDatabase{
                 result[0][0].email,
                 result[0][0].password
             )
-
-        } catch (error) {
-            throw new Error(error.sqlmessage || error.message);
-        }
-    }
-
-    public friendship = async (id1: string, id2: string): Promise<void> =>{
-        try {
-            await BaseDatabase.connection(UserDatabase.tablefriend).insert({
-                id_friend_1: id1,
-                id_friend_2: id2,
-            })
-
-            await BaseDatabase.connection(UserDatabase.tablefriend).insert({
-                id_friend_1: id2,
-                id_friend_2: id1,
-            })
-        } catch (error) {
-            throw new Error(error.sqlmessage || error.message);
-        }
-    }
-
-    public unfriendship = async (id1: string, id2: string): Promise<void> =>{
-        try {
-            await BaseDatabase.connection.raw(`
-                DELETE FROM ${UserDatabase.tablefriend}
-                WHERE id_friend_1 = "${id1}" AND id_friend_2 = "${id2}";
-            `)
-
-            await BaseDatabase.connection.raw(`
-            DELETE FROM ${UserDatabase.tablefriend}
-            WHERE id_friend_1 = "${id2}" AND id_friend_2 = "${id1}";
-        `)
 
         } catch (error) {
             throw new Error(error.sqlmessage || error.message);

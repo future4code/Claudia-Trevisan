@@ -1,24 +1,26 @@
 import { Request, Response } from 'express'
-import userBusiness from '../business/userBusiness'
+import UserBusiness from '../business/UserBusiness'
 import { CreateUserInput } from '../model/User'
 
 class UserController {
+
     public signup = async (req: Request, res: Response): Promise<void> =>{
         try {
+
             const input: CreateUserInput = {
                 name: req.body.name,
                 email: req.body.email,
                 password: req.body.password
             }
             
-            const token = await userBusiness.signup(input)
+            const token = await UserBusiness.signup(input)
 
             res.status(200)
             .send({token: token})
 
         } catch (error) {
-            res
-            .status(400)
+
+            res.status(400)
             .send({
                message: error.message || error.sqlMessage
             })
@@ -27,58 +29,20 @@ class UserController {
 
     public login = async (req: Request, res: Response): Promise<void> =>{
         try {
+
             const input = {
                 email: req.body.email,
                 password: req.body.password
             }
 
-
-            const token: string = await userBusiness.login(input)
+            const token: string = await UserBusiness.login(input)
 
             res.status(200)
             .send({token: token})
 
         } catch (error) {
-            res
-            .status(400)
-            .send({
-               message: error.message || error.sqlMessage
-            })
-        }
-    }
 
-    public friendship = async (req: Request, res: Response): Promise<void> =>{
-        try {
-            const {id} = req.body
-            
-            const token: string = req.headers.authorization as string
-
-            await userBusiness.friendship(token, id)
-
-            res.status(200)
-            .send("Amizade criada com sucesso")
-        } catch (error) {
-            res
-            .status(400)
-            .send({
-               message: error.message || error.sqlMessage
-            })
-        }
-    }
-
-    public unfriendship = async (req: Request, res: Response): Promise<void> =>{
-        try {
-            const {id} = req.body
-
-            const token = req.headers.authorization as string
-
-            await userBusiness.unfriendship(id, token)
-
-            res.status(200)
-            .send("Amizade desfeita com sucesso")
-        } catch (error) {
-            res
-            .status(400)
+            res.status(400)
             .send({
                message: error.message || error.sqlMessage
             })
